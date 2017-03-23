@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25969C4A-DA2B-4F81-8FE7-9253582BE9D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Controls</RootNamespace>
+    <AssemblyName>Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.2.UI, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="POBarCodeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POBarCodeControl.Designer.cs">
+      <DependentUpon>POBarCodeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POBreadCrumbEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POBreadCrumbEdit.Designer.cs">
+      <DependentUpon>POBreadCrumbEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POButton.Designer.cs">
+      <DependentUpon>POButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POButtonEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POButtonEdit.Designer.cs">
+      <DependentUpon>POButtonEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POCalcEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POCalcEdit.Designer.cs">
+      <DependentUpon>POCalcEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POCheckButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POCheckButton.Designer.cs">
+      <DependentUpon>POCheckButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POCheckedComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POCheckedComboBoxEdit.Designer.cs">
+      <DependentUpon>POCheckedComboBoxEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POCheckEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POCheckEdit.Designer.cs">
+      <DependentUpon>POCheckEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POCheckedListBoxControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POCheckedListBoxControl.Designer.cs">
+      <DependentUpon>POCheckedListBoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POColorEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POColorEdit.Designer.cs">
+      <DependentUpon>POColorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POColorPickEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POColorPickEdit.Designer.cs">
+      <DependentUpon>POColorPickEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POComboBoxEdit.Designer.cs">
+      <DependentUpon>POComboBoxEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PODateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PODateEdit.Designer.cs">
+      <DependentUpon>PODateEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PODateTimeChartRangeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PODateTimeChartRangeControl.Designer.cs">
+      <DependentUpon>PODateTimeChartRangeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PODropDownButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PODropDownButton.Designer.cs">
+      <DependentUpon>PODropDownButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POFontEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POFontEdit.Designer.cs">
+      <DependentUpon>POFontEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POHyperLinkEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POHyperLinkEdit.Designer.cs">
+      <DependentUpon>POHyperLinkEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POHyperLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POHyperLinkLabel.Designer.cs">
+      <DependentUpon>POHyperLinkLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POImageComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POImageComboBoxEdit.Designer.cs">
+      <DependentUpon>POImageComboBoxEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POImageEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POImageEdit.Designer.cs">
+      <DependentUpon>POImageEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POImageListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POImageListBox.Designer.cs">
+      <DependentUpon>POImageListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POLabel.Designer.cs">
+      <DependentUpon>POLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POListBoxControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POListBoxControl.Designer.cs">
+      <DependentUpon>POListBoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POLookupEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POLookupEdit.Designer.cs">
+      <DependentUpon>POLookupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POMarqueeProgressBarControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POMarqueeProgressBarControl.Designer.cs">
+      <DependentUpon>POMarqueeProgressBarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POMemoEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POMemoEdit.Designer.cs">
+      <DependentUpon>POMemoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POMemoExEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POMemoExEdit.Designer.cs">
+      <DependentUpon>POMemoExEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PONumericChartRangeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PONumericChartRangeControl.Designer.cs">
+      <DependentUpon>PONumericChartRangeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POPictureEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POPictureEdit.Designer.cs">
+      <DependentUpon>POPictureEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POPopupContainerEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POPopupContainerEdit.Designer.cs">
+      <DependentUpon>POPopupContainerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PORangeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PORangeControl.Designer.cs">
+      <DependentUpon>PORangeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POSearchControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POSearchControl.Designer.cs">
+      <DependentUpon>POSearchControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POSpinEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POSpinEdit.Designer.cs">
+      <DependentUpon>POSpinEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POTextBox.Designer.cs">
+      <DependentUpon>POTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POTimeEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POTimeEdit.Designer.cs">
+      <DependentUpon>POTimeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POTimeSpanEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POTimeSpanEdit.Designer.cs">
+      <DependentUpon>POTimeSpanEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POToggleSwitch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="POToggleSwitch.Designer.cs">
+      <DependentUpon>POToggleSwitch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="POButton.resx">
+      <DependentUpon>POButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POLabel.resx">
+      <DependentUpon>POLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POTextBox.resx">
+      <DependentUpon>POTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

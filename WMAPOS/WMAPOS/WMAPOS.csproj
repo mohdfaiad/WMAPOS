@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C939B937-3730-4CD0-8F54-410D23449331}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WMAPOS</RootNamespace>
+    <AssemblyName>WMAPOS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v16.2" />
+    <Reference Include="DevExpress.Data.v16.2" />
+    <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.2" />
+    <Reference Include="DevExpress.Sparkline.v16.2.Core" />
+    <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.2" />
+    <Reference Include="DevExpress.Printing.v16.2.Core" />
+    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmLogin.Designer.cs">
+      <DependentUpon>fmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmMain.Designer.cs">
+      <DependentUpon>fmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucBranches.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucBranches.Designer.cs">
+      <DependentUpon>ucBranches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucCompany.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucCompany.Designer.cs">
+      <DependentUpon>ucCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucCustomerGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucCustomerGroups.Designer.cs">
+      <DependentUpon>ucCustomerGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucCustomers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucCustomers.Designer.cs">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucItemCategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucItemCategories.Designer.cs">
+      <DependentUpon>ucItemCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucItemColors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucItemColors.Designer.cs">
+      <DependentUpon>ucItemColors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucItemDefinition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucItemDefinition.Designer.cs">
+      <DependentUpon>ucItemDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucItemGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucItemGroups.Designer.cs">
+      <DependentUpon>ucItemGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucItemSizes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucItemSizes.Designer.cs">
+      <DependentUpon>ucItemSizes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucItemTypes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucItemTypes.Designer.cs">
+      <DependentUpon>ucItemTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucMain.Designer.cs">
+      <DependentUpon>ucMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucOperators.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucOperators.Designer.cs">
+      <DependentUpon>ucOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucVendorGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucVendorGroups.Designer.cs">
+      <DependentUpon>ucVendorGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucVendors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucVendors.Designer.cs">
+      <DependentUpon>ucVendors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\ucWareHouses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Masters\ucWareHouses.Designer.cs">
+      <DependentUpon>ucWareHouses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fmLogin.resx">
+      <DependentUpon>fmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmMain.resx">
+      <DependentUpon>fmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\ucCompany.resx">
+      <DependentUpon>ucCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\ucMain.resx">
+      <DependentUpon>ucMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\DAL.tbl_Company.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{17739f75-e93e-4366-add7-cb889fe64f30}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CL\CL.csproj">
+      <Project>{92ff8787-9477-40b8-935d-962f73a5a7cb}</Project>
+      <Name>CL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Controls\Controls.csproj">
+      <Project>{25969c4a-da2b-4f81-8fe7-9253582be9d6}</Project>
+      <Name>Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{d3adfcd0-04da-4334-a928-90dab67e7cb4}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

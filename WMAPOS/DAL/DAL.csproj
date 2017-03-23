@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3ADFCD0-04DA-4334-A928-90DAB67E7CB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tbl_Barcodes.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Branch.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Company.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Currency.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CurrencyExch.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CustomerGroup.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Cutomers.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemCategory.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemColor.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemDefinition.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemGroup.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemGroupSections.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemPolicies.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemPrices.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemSize.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemType.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemUnit.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_operators.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_POS_Definition.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UserGroup.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Users.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_VendorGroup.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Vendors.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_WareHouse.cs">
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WMAPOS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMAPOS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WMAPOS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMAPOS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WMAPOS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMAPOS.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="WMAPOS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WMAPOS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WMAPOS.edmx.diagram">
+      <DependentUpon>WMAPOS.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WMAPOS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WMAPOS.edmx</DependentUpon>
+      <LastGenOutput>WMAPOS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WMAPOS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WMAPOS.edmx</DependentUpon>
+      <LastGenOutput>WMAPOS.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
