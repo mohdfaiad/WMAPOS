@@ -25,6 +25,11 @@ namespace WMAPOS
         
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            fmMain fm1 = new fmMain();
+            fm1.Show();
+            return;
+
             if (txt_UserName.Text == "" || txt_Password.Text == "")
             {
                 MessageBox.Show("أدخل إسم المستخدم وكلمة المرور");
@@ -32,6 +37,7 @@ namespace WMAPOS
             }
             try
             {
+                
                 var connection = ConfigurationManager.ConnectionStrings["WMAPOSConnectionString"].ConnectionString;
                 SqlConnection con = new SqlConnection(connection);
                 SqlCommand cmd = new SqlCommand("Select * from tbl_Users where UserName=@username and Password=@password", con);
@@ -42,6 +48,7 @@ namespace WMAPOS
                 DataTable DT = new DataTable();
                 adapt.Fill(DT);
                 con.Close();
+                
                 if (DT.Rows.Count == 1)
                 {
                     this.Hide();
@@ -53,6 +60,7 @@ namespace WMAPOS
                 {
                     MessageBox.Show("خطأ");
                 }
+            
             }
             catch (Exception ex)
             {

@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,6 +58,10 @@
     <Compile Include="Company.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Helper\DBConnection.cs" />
+    <Compile Include="Helper\Enums.cs" />
+    <Compile Include="Helper\ResourceKeys.cs" />
+    <Compile Include="Helper\UseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

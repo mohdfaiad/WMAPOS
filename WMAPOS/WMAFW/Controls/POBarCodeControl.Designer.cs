@@ -1,4 +1,4 @@
-﻿namespace Controls
+﻿namespace WMAFW.Controls
 {
     partial class POBarCodeControl
     {

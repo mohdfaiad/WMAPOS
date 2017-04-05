@@ -36,14 +36,18 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v16.2" />
     <Reference Include="DevExpress.Data.v16.2" />
-    <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.Utils.v16.2" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core" />
     <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.2" />
     <Reference Include="DevExpress.Printing.v16.2.Core" />
+    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -176,12 +180,16 @@
     <EmbeddedResource Include="fmMain.resx">
       <DependentUpon>fmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Masters\ucBranches.resx">
+      <DependentUpon>ucBranches.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Masters\ucCompany.resx">
       <DependentUpon>ucCompany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\ucMain.resx">
       <DependentUpon>ucMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -196,7 +204,30 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DAL.tbl_Barcodes.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_Branch.datasource" />
     <None Include="Properties\DataSources\DAL.tbl_Company.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_Currency.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_CurrencyExch.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_CustomerGroup.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_Cutomers.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemCategory.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemColor.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemDefinition.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemGroup.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemGroupSections.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemPolicies.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemPrices.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemSize.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemType.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_ItemUnit.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_operators.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_POS_Definition.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_UserGroup.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_Users.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_VendorGroup.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_Vendors.datasource" />
+    <None Include="Properties\DataSources\DAL.tbl_WareHouse.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -216,13 +247,13 @@
       <Project>{92ff8787-9477-40b8-935d-962f73a5a7cb}</Project>
       <Name>CL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Controls\Controls.csproj">
-      <Project>{25969c4a-da2b-4f81-8fe7-9253582be9d6}</Project>
-      <Name>Controls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{d3adfcd0-04da-4334-a928-90dab67e7cb4}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMAFW\WMAFW.csproj">
+      <Project>{25969c4a-da2b-4f81-8fe7-9253582be9d6}</Project>
+      <Name>WMAFW</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

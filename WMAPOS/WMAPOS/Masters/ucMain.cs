@@ -22,8 +22,8 @@ namespace WMAPOS.Masters
 
         private void simpleButton8_Click(object sender, EventArgs e)
         {
-           
 
-            }
+
+        }
     }
 }

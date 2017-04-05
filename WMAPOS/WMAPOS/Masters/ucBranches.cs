@@ -8,10 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using WMAFW.UserControls;
 
 namespace WMAPOS.Masters
 {
-    public partial class ucBranches : ucMain
+    public partial class ucBranches : BaseForm
     {
         public ucBranches()
         {
