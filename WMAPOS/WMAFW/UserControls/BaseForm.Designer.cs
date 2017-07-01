@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
@@ -49,18 +48,22 @@
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiPreview = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rgpTasks = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgReport = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rgpSkin = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItemkey = new DevExpress.XtraLayout.LayoutControlItem();
+            this.key = new DevExpress.XtraEditors.TextEdit();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
-            this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.bs = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemkey)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.key.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
+            this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,12 +238,20 @@
             this.skinRibbonGalleryBarItem2.Id = 21;
             this.skinRibbonGalleryBarItem2.Name = "skinRibbonGalleryBarItem2";
             // 
+            // bbiEdit
+            // 
+            this.bbiEdit.Caption = "Edit";
+            this.bbiEdit.Id = 22;
+            this.bbiEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiEdit.ImageOptions.Image")));
+            this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
+            this.bbiEdit.Name = "bbiEdit";
+            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEdit_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rgpTasks,
-            this.rpgReport,
-            this.rgpSkin});
+            this.rpgReport});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
             this.mainRibbonPage.Text = "Home";
@@ -272,23 +283,39 @@
             this.rpgReport.Name = "rpgReport";
             this.rpgReport.Text = "Report";
             // 
-            // rgpSkin
-            // 
-            this.rgpSkin.ItemLinks.Add(this.skinRibbonGalleryBarItem2);
-            this.rgpSkin.Name = "rgpSkin";
-            this.rgpSkin.Text = "Skin";
-            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItemkey});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1268, 593);
             this.layoutControlGroup1.TextVisible = false;
             // 
+            // layoutControlItemkey
+            // 
+            this.layoutControlItemkey.Control = this.key;
+            this.layoutControlItemkey.CustomizationFormText = "key";
+            this.layoutControlItemkey.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItemkey.Name = "layoutControlItemkey";
+            this.layoutControlItemkey.Size = new System.Drawing.Size(1242, 567);
+            this.layoutControlItemkey.Text = "key";
+            this.layoutControlItemkey.TextSize = new System.Drawing.Size(19, 16);
+            // 
+            // key
+            // 
+            this.key.Location = new System.Drawing.Point(38, 16);
+            this.key.MenuManager = this.mainRibbonControl;
+            this.key.Name = "key";
+            this.key.Size = new System.Drawing.Size(1214, 22);
+            this.key.StyleController = this.dataLayoutControl1;
+            this.key.TabIndex = 4;
+            // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.key);
             this.dataLayoutControl1.DataSource = this.bs;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 145);
@@ -298,15 +325,6 @@
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
             this.dataLayoutControl1.Size = new System.Drawing.Size(1268, 593);
             this.dataLayoutControl1.TabIndex = 0;
-            // 
-            // bbiEdit
-            // 
-            this.bbiEdit.Caption = "Edit";
-            this.bbiEdit.Id = 22;
-            this.bbiEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiEdit.Name = "bbiEdit";
-            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEdit_ItemClick);
             // 
             // BaseForm
             // 
@@ -322,7 +340,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemkey)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.key.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
+            this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,7 +354,6 @@
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup rgpTasks;
         public DevExpress.XtraBars.BarButtonItem bbiPreview;
         public DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;
-        public DevExpress.XtraBars.Ribbon.RibbonPageGroup rgpSkin;
         public DevExpress.XtraBars.Ribbon.RibbonControl mainRibbonControl;
         public DevExpress.XtraBars.Ribbon.RibbonPage mainRibbonPage;
         public DevExpress.XtraBars.BarButtonItem bbiSave;
@@ -357,5 +377,7 @@
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgReport;
         public System.Windows.Forms.BindingSource bs;
         public DevExpress.XtraBars.BarButtonItem bbiEdit;
+        public DevExpress.XtraEditors.TextEdit key;
+        public DevExpress.XtraLayout.LayoutControlItem layoutControlItemkey;
     }
 }

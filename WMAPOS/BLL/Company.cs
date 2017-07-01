@@ -52,11 +52,11 @@ namespace BLL
                     }
                     
                     scope.Complete();
-                    return TransactionResult.SaveSuccess;
+                    return TransactionResult.DeleteSuccess;
                 }
                 catch (Exception)
                 {
-                    return TransactionResult.SaveFailed;
+                    return TransactionResult.DeleteFailed;
                 }
                 finally
                 {
@@ -67,6 +67,7 @@ namespace BLL
 
         public TransactionResult Save(tbl_Company company, List<tbl_Branch> branches)
         {
+
             using (var scope = new TransactionScope())
             {
                 try
@@ -74,6 +75,7 @@ namespace BLL
                     TransactionResult result;
                     using (var useData = new UseData<tbl_Company>(User, ""))
                     {
+                        
                         result = useData.Save(company, true, useLog: false);
                         if (result != TransactionResult.SaveSuccess)
                             return result;
@@ -98,5 +100,6 @@ namespace BLL
             }
         }
 
+       
     }
 }

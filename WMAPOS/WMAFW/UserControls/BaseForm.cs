@@ -65,7 +65,7 @@ namespace WMAFW.UserControls
                     bbiEdit.Enabled = false;
                     bbiDelete.Enabled = false;
                     ChangeControlsReadOnly(false);
-
+                    key.Enabled = true;
                     break;
             }
             AfterMove?.Invoke(bs.Current, new MoveEventArgs(moveType));
@@ -85,8 +85,10 @@ namespace WMAFW.UserControls
                 });
             }
             else
+            {
                 bbiSave.Enabled = bbiSaveAndClose.Enabled = bbiSaveAndNew.Enabled = false;
-
+                MessageBox.Show("تم الحفظ");
+            }
             return args.Cancel;
         }
 
@@ -179,15 +181,27 @@ namespace WMAFW.UserControls
 
         public void bbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            PerformChangeControlsReadOnly(false);
             bbiSave.Enabled = bbiSaveAndClose.Enabled = bbiSaveAndNew.Enabled = true;
             bbiNext.Enabled = bbiLast.Enabled = bbiPrev.Enabled = bbiFirst.Enabled = false;
             bbiReset.Enabled = true;
             bbiEdit.Enabled = false;
             bbiDelete.Enabled = false;
             bbiAddNew.Enabled = false;
-            PerformChangeControlsReadOnly(false);
-        }
+            
+            //layoutControlItemkey.Enabled = true;
+            //layoutControlItemkey.is = false;
+            //dataLayoutControl1.RestoreDefaultLayout();
+            //key.ReadOnly = key.Properties.ReadOnly = true;
+            //
+            //
+            //(dataLayoutControl1.GetControlByName("key") as TextEdit).Properties.UseReadOnlyAppearance = true;
+            //(dataLayoutControl1.GetControlByName("key") as TextEdit).Properties.ReadOnly = true;
+            //(dataLayoutControl1.GetControlByName("key") as TextEdit).ReadOnly = true;
 
+            key.Enabled = false;
+
+        }
         private void PerformChangeControlsReadOnly(bool readOnly = true)
         {
             ChangeControlsReadOnly(readOnly);

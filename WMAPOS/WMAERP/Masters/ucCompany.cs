@@ -29,14 +29,7 @@ namespace WMAERP.Masters
             var tbl = (tbl_Company)bs.Current;
             var tbls = _bindingSource.List as List<tbl_Branch>;
 
-            if (proxy.Company.Delete(tbl,tbls)!=TransactionResult.DeleteSuccess)
-            {
-                MessageBox.Show("حدث خطأ");
-            }
-            else
-            {
-                MessageBox.Show("تم الحذف");
-            }
+            MessageBox.Show(proxy.Company.Delete(tbl, tbls) != TransactionResult.DeleteSuccess ? "حدث خطأ" : "تم الحذف");
         }
 
         private void OnAfterMove(object sender, MoveEventArgs moveEventArgs)
@@ -57,5 +50,6 @@ namespace WMAERP.Masters
             args.Cancel = proxy.Company.Save(tbl, tbls) != TransactionResult.SaveSuccess;
         }
 
+      
     }
 }
