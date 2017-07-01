@@ -17,8 +17,8 @@ namespace DAL
         public string CompanyCode { get; set; }
         public string CustomerCode { get; set; }
         public string CustomerGroupCode { get; set; }
-        public string CustomerGroupNameAr { get; set; }
-        public string CustomerGroupNameEn { get; set; }
+        public string CustomerNameAr { get; set; }
+        public string CustomerNameEn { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> LastUpdateDate { get; set; }
     

@@ -14,8 +14,7 @@ namespace BLL.Helper
         }
         public void Add(string key)
         {
-            Add(new ResourceKey { Key = key });
-        }
+            Add(new ResourceKey { Key = key });}
     }
 
     public class ResourceKey

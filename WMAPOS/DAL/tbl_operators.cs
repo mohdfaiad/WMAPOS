@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class tbl_operators
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_operators()
+        {
+            this.tbl_PosClose = new HashSet<tbl_PosClose>();
+        }
+    
         public string CompanyCode { get; set; }
         public string OperatorCode { get; set; }
         public string OperatorNameAr { get; set; }
@@ -24,5 +30,7 @@ namespace DAL
     
         public virtual tbl_Company tbl_Company { get; set; }
         public virtual tbl_Users tbl_Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PosClose> tbl_PosClose { get; set; }
     }
 }

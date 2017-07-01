@@ -23,11 +23,11 @@ namespace BLL.Helper
     public class UseData<T> : DbConnection where T : class, new()
     {
         #region definitions
-        public delegate void OnBeforeSave(T sender, WMAPOSEntities context, EventUseData e);
-        public delegate void OnAfterSave(T sender, WMAPOSEntities context, EventBase e);
+        public delegate void OnBeforeSave(T sender, WMAERPEntities context, EventUseData e);
+        public delegate void OnAfterSave(T sender, WMAERPEntities context, EventBase e);
 
-        public delegate void OnBeforeDelete(T sender, WMAPOSEntities context, EventUseData e);
-        public delegate void OnAfterDelete(T sender, WMAPOSEntities context, EventBase e);
+        public delegate void OnBeforeDelete(T sender, WMAERPEntities context, EventUseData e);
+        public delegate void OnAfterDelete(T sender, WMAERPEntities context, EventBase e);
 
         public virtual event OnBeforeSave BeforeSave;
         public virtual event OnAfterSave AfterSave;
@@ -35,81 +35,89 @@ namespace BLL.Helper
         public virtual event OnBeforeDelete BeforeDelete;
         public virtual event OnAfterDelete AfterDelete;
 
-        //private readonly User _user;
-        private readonly int _controllerId;
+        private readonly tbl_Users _user;
+        private readonly string _formType;
+        private readonly string _formName;
 
 
         #endregion
-        #region constractors
-
+        #region constractorspublic ResourceKeys LastKeysErrorMsg { get; set; }
+        public WMAERPEntities Db { get; set; }
         public ResourceKeys LastKeysErrorMsg { get; set; }
-        public WMAPOSEntities Db { get; set; }
-
         public ObjectContext ContextDb => ((IObjectContextAdapter)Db).ObjectContext;
 
         public UseData()
         {
-            Context = new WMAPOSEntities();
+            Context = new WMAERPEntities();
             if (Context.Database.Connection.State != ConnectionState.Open)
                 Context.Database.Connection.Open();
             Db = Context;
             LastKeysErrorMsg = new ResourceKeys();
         }
 
-        public UseData(int controllerId, ResourceKeys lastKeysErrorMsg = null)
+        public string MasterKey { get; set; }
+        public T Current { get; set; }
+        public UseData(tbl_Users user, string formName, string masterKey = "", T currentObj = null, ResourceKeys lastKeysErrorMsg = null, string formType = null)
             : this()
         {
-            _controllerId = controllerId;
+            _formType = formType;
+            _formName = formName;
+            _user = user;
             LastKeysErrorMsg = lastKeysErrorMsg ?? new ResourceKeys();
+            if (masterKey != "")
+            {
+                MasterKey = masterKey;
+            }
+            else if (GetKeys.Length > 0)
+            {
+                MasterKey = GetKeys[0];
+            }
+            Current = currentObj ?? new T();
         }
         #endregion
+
         #region Movement 
-        public virtual T FindByMove(EditFormActionType actionType, T obj)
+        public virtual T FindByMove(EditFormActionType actionType)
         {
             switch (actionType)
             {
                 case EditFormActionType.First:
-                    return First(obj);
+                    return First();
                 case EditFormActionType.Last:
-                    return Last(obj);
+                    return Last();
                 case EditFormActionType.Next:
-                    return Next(obj);
+                    return Next();
                 case EditFormActionType.Previous:
-                    return Previous(obj);
+                    return Previous();
                 case EditFormActionType.Edit:
-                    return Find(obj);
+                    return Find();
                 case EditFormActionType.New:
                     var o = new T();
-                    if (GetKeys.Contains("CompanyId") && !(obj is tbl_Company))
-                        o.SetValue("CompanyId", obj.GetValue("CompanyId"));
-                    if (GetKeys.Contains("BranchId") && !(obj is tbl_Branch))
-                        o.SetValue("BranchId", obj.GetValue("BranchId"));
+                    if (GetKeys.Contains("CompanyCode") && !(Current is tbl_Company))
+                        o.SetValue("CompanyCode", Current.GetValue("CompanyCode"));
+                    if (GetKeys.Contains("BranchCode") && !(Current is tbl_Branch))
+                        o.SetValue("BranchCode", Current.GetValue("BranchCode"));
                     return o;
             }
 
             return new T();
         }
 
-        public virtual T First(T obj)
+        public virtual T First()
         {
-           
+            var obj = Current;
             string tableName = typeof(T).Name;
-            string keyName = GetKeys[0];
+            string keyName = MasterKey.IsNullOrEmpty() ? GetKeys[0] : MasterKey;
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.Append($"Select Top 1 * from {tableName} Where 1=1 ");
 
-            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyId") && GetKeys.Contains("BranchId"))
+            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyCode") && GetKeys.Contains("BranchCode"))
             {
-                sqlStr.Append($" And CompanyId ='{obj.GetValue("CompanyId")}'");
-                sqlStr.Append($" And BranchId ='{obj.GetValue("BranchId")}'");
-                //if (!(obj is vw_GLTrxBase))
-                //{
-                //    sqlStr.Append($" And TrxTypeId ='{obj.GetValue("TrxTypeId")}'");
-                //}
+                sqlStr.Append($" And CompanyCode ='{obj.GetValue("CompanyCode")}'");
+                sqlStr.Append($" And BranchCode ='{obj.GetValue("BranchCode")}'");
                 sqlStr.Append(" Order by PkId");
-                //entity = Context.Set<T>().SqlQuery(sqlStr.ToString()).FirstOrDefault() ?? new T();
             }
-            else if (GetKeys.Contains("CompanyId"))
+            else if (GetKeys.Contains("CompanyCode"))
             {
                 if (GetKeys.Length > 1 && GetKeys.Length <= 4)
                 {
@@ -124,50 +132,45 @@ namespace BLL.Helper
             T entity = Context.Set<T>().SqlQuery(sqlStr.ToString()).FirstOrDefault() ?? new T();
             return entity;
         }
-        public virtual T Next(T obj)
+        public virtual T Next()
         {
+            var obj = Current;
             if (obj == null)
             {
                 return null;
             }
 
-            T entity ;//= new T();
+            T entity;//= new T();
             string tableName = typeof(T).Name;
-            string keyName = GetKeys[0];
+            string keyName = MasterKey.IsNullOrEmpty() ? GetKeys[0] : MasterKey;
             string keyValue = obj.GetValue(GetKeys[0]).IsNull();
 
             StringBuilder sqlStr = new StringBuilder();
             StringBuilder sqlWhere = new StringBuilder();
             sqlStr.Append($"Select * from {tableName} Where 1=1 ");
 
-            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyId") && GetKeys.Contains("BranchId"))
+            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyCode") && GetKeys.Contains("BranchCode"))
             {
                 string s =
                     $"Select * From {tableName} Where " +
                     $"TrxTypeId='{obj.GetValue("TrxTypeId")}' And " +
                     $"YearId='{obj.GetValue("YearId")}' And " +
                     $"PeriodId='{obj.GetValue("PeriodId")}' And " +
-                    $"CompanyId='{obj.GetValue("CompanyId")}' And " +
-                    $"BranchId='{obj.GetValue("BranchId")}'";
+                    $"CompanyCode='{obj.GetValue("CompanyCode")}' And " +
+                    $"BranchCode='{obj.GetValue("BranchCode")}'";
                 if (obj.GetValue("TrxNo") != null)
                 {
-                    // when clicked add new then next
                     s += $"And TrxNo = '{obj.GetValue("TrxNo")}'";
                 }
 
                 keyValue = Context.Set<T>().SqlQuery(s).FirstOrDefault().GetValue("PkId").IsNull(); //obj.GetValue(GetKeys[0]).IsNull();
-                sqlWhere.Append($" And CompanyId ='{obj.GetValue("CompanyId")}'");
-                sqlWhere.Append($" And BranchId ='{obj.GetValue("BranchId")}'");
-                //if (!(obj is vw_GLTrxBase))
-                //{
-                //    sqlWhere.Append($" And TrxTypeId ='{obj.GetValue("TrxTypeId")}'");
-                //}
-                //sqlStr.Append(sqlWhere);
+                sqlWhere.Append($" And CompanyCode ='{obj.GetValue("CompanyCode")}'");
+                sqlWhere.Append($" And BranchCode ='{obj.GetValue("BranchCode")}'");
                 if (obj.GetValue("TrxNo") != null)
                     sqlStr.Append($"{sqlWhere} And PkId=(Select Min(PkId) from {tableName} Where PkId > '{keyValue}' {sqlWhere})");
                 entity = Context.Set<T>().SqlQuery(sqlStr.ToString()).LastOrDefault() ?? obj;
             }
-            else if (GetKeys.Contains("CompanyId"))
+            else if (GetKeys.Contains("CompanyCode"))
             {
                 if (GetKeys.Length > 1 && GetKeys.Length <= 4)
                 {
@@ -190,51 +193,46 @@ namespace BLL.Helper
 
             return entity ?? obj;
         }
-        public virtual T Previous(T obj)
+        public virtual T Previous()
         {
+            var obj = Current;
             if (obj == null)
             {
                 return null;
             }
-
-            T entity ;//= new T();
+            T entity;
             string tableName = typeof(T).Name;
-            string keyName = GetKeys[0];
+            string keyName = MasterKey.IsNullOrEmpty() ? GetKeys[0] : MasterKey;
             string keyValue = obj.GetValue(GetKeys[0]).IsNull();
 
             StringBuilder sqlStr = new StringBuilder();
             StringBuilder sqlWhere = new StringBuilder();
             sqlStr.Append($"Select * from {tableName} Where 1=1 ");
 
-            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyId") && GetKeys.Contains("BranchId"))
+            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyCode") && GetKeys.Contains("BranchCode"))
             {
                 string s =
                     $"Select * From {tableName} Where " +
                     $"TrxTypeId='{obj.GetValue("TrxTypeId")}' And " +
                     $"YearId='{obj.GetValue("YearId")}' And " +
                     $"PeriodId='{obj.GetValue("PeriodId")}' And " +
-                    $"CompanyId='{obj.GetValue("CompanyId")}' And " +
-                    $"BranchId='{obj.GetValue("BranchId")}'";
-                    if (obj.GetValue("TrxNo") != null)
-                    {
-                        // when clicked add new then previous
-                        s += $"And TrxNo = '{obj.GetValue("TrxNo")}'";
-                    }
+                    $"CompanyCode='{obj.GetValue("CompanyCode")}' And " +
+                    $"BranchCode='{obj.GetValue("BranchCode")}'";
+                if (obj.GetValue("TrxNo") != null)
+                {
+                    s += $"And TrxNo = '{obj.GetValue("TrxNo")}'";
+                }
                 keyValue = Context.Set<T>().SqlQuery(s).FirstOrDefault().GetValue("PkId").IsNull(); //obj.GetValue(GetKeys[0]).IsNull();
 
 
-                sqlWhere.Append($" And CompanyId ='{obj.GetValue("CompanyId")}'");
-                sqlWhere.Append($" And BranchId ='{obj.GetValue("BranchId")}'");
-                //if (!(obj is vw_GLTrxBase))
-                //{
-                //    sqlWhere.Append($" And TrxTypeId ='{obj.GetValue("TrxTypeId")}'");
-                //}
-                //sqlStr.Append(sqlWhere);
+                sqlWhere.Append($" And CompanyCode ='{obj.GetValue("CompanyCode")}'");
+                sqlWhere.Append($" And BranchCode ='{obj.GetValue("BranchCode")}'");
+
                 if (obj.GetValue("TrxNo") != null)
                     sqlStr.Append($"{sqlWhere} And PkId=(Select Max(PkId) from {tableName} Where PkId < '{keyValue}' {sqlWhere})");
                 entity = Context.Set<T>().SqlQuery(sqlStr.ToString()).FirstOrDefault() ?? obj;
             }
-            else if (GetKeys.Contains("CompanyId"))
+            else if (GetKeys.Contains("CompanyCode"))
             {
                 if (GetKeys.Length > 1 && GetKeys.Length <= 4)
                 {
@@ -257,28 +255,22 @@ namespace BLL.Helper
             }
             return entity ?? obj;
         }
-        public virtual T Last(T obj)
+        public virtual T Last()
         {
-            //T entity = new T();
+            var obj = Current;
             string tableName = typeof(T).Name;
-            string keyName = GetKeys[0];
+            string keyName = MasterKey.IsNullOrEmpty() ? GetKeys[0] : MasterKey;
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.Append($"Select Top 1 * from {tableName} Where 1=1 ");
 
-            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyId") && GetKeys.Contains("BranchId"))
+            if (GetKeys.Length > 4 && obj.GetType().GetProperties().Any(p => p.Name.Equals("PkId")) && GetKeys.Contains("TrxTypeId") && GetKeys.Contains("CompanyCode") && GetKeys.Contains("BranchCode"))
             {
-                sqlStr.Append($" And CompanyId ='{obj.GetValue("CompanyId")}'");
-                sqlStr.Append($" And BranchId ='{obj.GetValue("BranchId")}'");
-                //if (!(obj is vw_GLTrxBase))
-                //{
-                //    sqlStr.Append($" And TrxTypeId ='{obj.GetValue("TrxTypeId")}'");
-                //}
+                sqlStr.Append($" And CompanyCode ='{obj.GetValue("CompanyCode")}'");
+                sqlStr.Append($" And BranchCode ='{obj.GetValue("BranchCode")}'");
                 sqlStr.Append(" Order by PkId Desc");
             }
-            else if (GetKeys.Contains("CompanyId"))
+            else if (GetKeys.Contains("CompanyCode"))
             {
-
-
                 if (GetKeys.Length > 1 && GetKeys.Length <= 4)
                 {
                     for (int i = 1; i < GetKeys.Length; i++)
@@ -307,16 +299,17 @@ namespace BLL.Helper
         {
             return Find(entity) != null;
         }
-        public virtual T Find(T entity)
+        public virtual T Find(T entity = null)
         {
             if (entity == null)
             {
-                return null;
+                entity = Current;
             }
             var keyvalues = new List<object>();
             GetKeys.ToList().ForEach(key =>
             {
-                keyvalues.Add(entity.GetType().GetProperty(key).GetValue(entity));
+                //entity.GetType().GetProperty(key).GetValue(entity)
+                keyvalues.Add(entity.GetValue(key));
             });
             return Context.Set<T>().Find(keyvalues.ToArray());
         }
@@ -404,7 +397,7 @@ namespace BLL.Helper
                 }
                 //if (_user.FollowUp && useLog)
                 //{
-                //    Context.LogEntity(o, _user, GetKeys[0], _controllerId, headerkeyvalue, headerkeyvalue);
+                //    Context.LogEntity(o, _user, GetKeys[0], _formType, headerkeyvalue, headerkeyvalue);
                 //}
                 Context.SaveChanges();
                 scope.Complete();
@@ -530,8 +523,9 @@ namespace BLL.Helper
             TransactionScope scope = new TransactionScope();
             try
             {
-                var keyvalue = entity.GetType().GetProperty(GetKeys[0]).GetValue(entity);
-                Context.Entry(entity).State = EntityState.Deleted;
+                var keyvalue = entity.GetValue(MasterKey.IsNullOrEmpty() ? GetKeys[0] : MasterKey);
+                var row = Find(entity);
+                entity = row;Context.Entry(entity).State = EntityState.Deleted;
                 if (BeforeDelete != null)
                 {
                     var eventUseData = new EventUseData();
@@ -545,15 +539,15 @@ namespace BLL.Helper
 
                 //if (_user.FollowUp && useLog)
                 //{
-                //    Context.LogEntity(entity, _user, GetKeys[0], _controllerId, headerkeyvalue, headerkeyvalue);
+                //    Context.LogEntity(entity, _user, GetKeys[0], _formType, headerkeyvalue, headerkeyvalue);
                 //}
-                //Context.SaveChanges();
+                Context.SaveChanges();
 
-                //var lkpWebControllers = Context.lkp_WebControllers.FirstOrDefault(c => c.ControllerId == _controllerId); //c.ControllerName.Equals(_controllername, StringComparison.OrdinalIgnoreCase) || 
+                //var lkpWebControllers = Context.lkp_WebControllers.FirstOrDefault(c => c.formType == _formType); //c.ControllerName.Equals(_controllername, StringComparison.OrdinalIgnoreCase) || 
                 //if (lkpWebControllers != null)
                 //{
-                //    int controllerId = lkpWebControllers.ControllerId;
-                //    RemoveAttachments(controllerId, keyvalue.ToString());
+                //    int formType = lkpWebControllers.formType;
+                //    RemoveAttachments(formType, keyvalue.ToString());
                 //}
 
                 scope.Complete();
@@ -606,9 +600,9 @@ namespace BLL.Helper
             return Delete(entity);
         }
         /*
-        public void RemoveAttachments(int controllerId, string key1)
+        public void RemoveAttachments(int formType, string key1)
         {
-            Context.tbl_Attachments.Where(att => att.ControllerId == controllerId && att.Key1 == key1)
+            Context.tbl_Attachments.Where(att => att.formType == formType && att.Key1 == key1)
                 .ToList()
                 .ForEach(row =>
                 {

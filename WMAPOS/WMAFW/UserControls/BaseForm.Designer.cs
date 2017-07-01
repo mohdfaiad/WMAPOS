@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
@@ -42,19 +43,25 @@
             this.bbiFirst = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNext = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPrev = new DevExpress.XtraBars.BarButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.beiComboReports = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPrint = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.bbiPreview = new DevExpress.XtraBars.BarButtonItem();
+            this.skinRibbonGalleryBarItem2 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rgpTasks = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgReport = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rgpSkin = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
+            this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonControl
@@ -74,12 +81,15 @@
             this.bbiFirst,
             this.bbiNext,
             this.bbiPrev,
-            this.barEditItem1,
-            this.barButtonItem2,
-            this.skinRibbonGalleryBarItem1});
+            this.beiComboReports,
+            this.bbiPrint,
+            this.skinRibbonGalleryBarItem1,
+            this.bbiPreview,
+            this.skinRibbonGalleryBarItem2,
+            this.bbiEdit});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
             this.mainRibbonControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.mainRibbonControl.MaxItemId = 20;
+            this.mainRibbonControl.MaxItemId = 23;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
@@ -87,7 +97,7 @@
             this.repositoryItemComboBox1});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.mainRibbonControl.Size = new System.Drawing.Size(1107, 145);
+            this.mainRibbonControl.Size = new System.Drawing.Size(1268, 145);
             this.mainRibbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiSave
@@ -186,11 +196,11 @@
             this.bbiPrev.Name = "bbiPrev";
             this.bbiPrev.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrev_ItemClick);
             // 
-            // barEditItem1
+            // beiComboReports
             // 
-            this.barEditItem1.Edit = this.repositoryItemComboBox1;
-            this.barEditItem1.Id = 16;
-            this.barEditItem1.Name = "barEditItem1";
+            this.beiComboReports.Edit = this.repositoryItemComboBox1;
+            this.beiComboReports.Id = 16;
+            this.beiComboReports.Name = "beiComboReports";
             // 
             // repositoryItemComboBox1
             // 
@@ -199,12 +209,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
-            // barButtonItem2
+            // bbiPrint
             // 
-            this.barButtonItem2.Caption = "Print";
-            this.barButtonItem2.Id = 17;
-            this.barButtonItem2.ImageOptions.ImageUri.Uri = "Print";
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.bbiPrint.Caption = "Print";
+            this.bbiPrint.Id = 17;
+            this.bbiPrint.ImageOptions.ImageUri.Uri = "Print";
+            this.bbiPrint.Name = "bbiPrint";
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -212,32 +222,61 @@
             this.skinRibbonGalleryBarItem1.Id = 19;
             this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
             // 
+            // bbiPreview
+            // 
+            this.bbiPreview.Caption = "Preview";
+            this.bbiPreview.Id = 20;
+            this.bbiPreview.ImageOptions.ImageUri.Uri = "Preview";
+            this.bbiPreview.Name = "bbiPreview";
+            // 
+            // skinRibbonGalleryBarItem2
+            // 
+            this.skinRibbonGalleryBarItem2.Caption = "skinRibbonGalleryBarItem2";
+            this.skinRibbonGalleryBarItem2.Id = 21;
+            this.skinRibbonGalleryBarItem2.Name = "skinRibbonGalleryBarItem2";
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.mainRibbonPageGroup,
-            this.ribbonPageGroup1});
+            this.rgpTasks,
+            this.rpgReport,
+            this.rgpSkin});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
             this.mainRibbonPage.Text = "Home";
             // 
-            // mainRibbonPageGroup
+            // rgpTasks
             // 
-            this.mainRibbonPageGroup.AllowTextClipping = false;
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSave);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndClose);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSaveAndNew);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiAddNew);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiReset);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiDelete);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiLast);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiPrev);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiNext);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiFirst);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
-            this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
-            this.mainRibbonPageGroup.ShowCaptionButton = false;
-            this.mainRibbonPageGroup.Text = "Tasks";
+            this.rgpTasks.AllowTextClipping = false;
+            this.rgpTasks.ItemLinks.Add(this.bbiSave);
+            this.rgpTasks.ItemLinks.Add(this.bbiSaveAndClose);
+            this.rgpTasks.ItemLinks.Add(this.bbiSaveAndNew);
+            this.rgpTasks.ItemLinks.Add(this.bbiAddNew);
+            this.rgpTasks.ItemLinks.Add(this.bbiReset);
+            this.rgpTasks.ItemLinks.Add(this.bbiDelete);
+            this.rgpTasks.ItemLinks.Add(this.bbiLast);
+            this.rgpTasks.ItemLinks.Add(this.bbiPrev);
+            this.rgpTasks.ItemLinks.Add(this.bbiNext);
+            this.rgpTasks.ItemLinks.Add(this.bbiFirst);
+            this.rgpTasks.ItemLinks.Add(this.bbiClose);
+            this.rgpTasks.ItemLinks.Add(this.bbiEdit);
+            this.rgpTasks.Name = "rgpTasks";
+            this.rgpTasks.ShowCaptionButton = false;
+            this.rgpTasks.Text = "Tasks";
+            // 
+            // rpgReport
+            // 
+            this.rpgReport.ItemLinks.Add(this.beiComboReports);
+            this.rpgReport.ItemLinks.Add(this.bbiPrint);
+            this.rpgReport.ItemLinks.Add(this.bbiPreview);
+            this.rpgReport.Name = "rpgReport";
+            this.rpgReport.Text = "Report";
+            // 
+            // rgpSkin
+            // 
+            this.rgpSkin.ItemLinks.Add(this.skinRibbonGalleryBarItem2);
+            this.rgpSkin.Name = "rgpSkin";
+            this.rgpSkin.Text = "Skin";
             // 
             // layoutControlGroup1
             // 
@@ -245,27 +284,29 @@
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1107, 593);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1268, 593);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // dataLayoutControl1
             // 
-            this.dataLayoutControl1.AllowCustomization = false;
+            this.dataLayoutControl1.DataSource = this.bs;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 145);
             this.dataLayoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
-            this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(987, 390, 562, 500);
+            this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(652, 390, 562, 500);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1107, 593);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1268, 593);
             this.dataLayoutControl1.TabIndex = 0;
             // 
-            // ribbonPageGroup1
+            // bbiEdit
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barEditItem1);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonPageGroup1.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.bbiEdit.Caption = "Edit";
+            this.bbiEdit.Id = 22;
+            this.bbiEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
+            this.bbiEdit.Name = "bbiEdit";
+            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEdit_ItemClick);
             // 
             // BaseForm
             // 
@@ -276,38 +317,45 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "BaseForm";
-            this.Size = new System.Drawing.Size(1107, 738);
+            this.Size = new System.Drawing.Size(1268, 738);
+            this.Load += new System.EventHandler(this.BaseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+        public DevExpress.XtraBars.Ribbon.RibbonPageGroup rgpTasks;
+        public DevExpress.XtraBars.BarButtonItem bbiPreview;
+        public DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem2;
+        public DevExpress.XtraBars.Ribbon.RibbonPageGroup rgpSkin;
         public DevExpress.XtraBars.Ribbon.RibbonControl mainRibbonControl;
         public DevExpress.XtraBars.Ribbon.RibbonPage mainRibbonPage;
-        public DevExpress.XtraBars.Ribbon.RibbonPageGroup mainRibbonPageGroup;
         public DevExpress.XtraBars.BarButtonItem bbiSave;
         public DevExpress.XtraBars.BarButtonItem bbiSaveAndClose;
         public DevExpress.XtraBars.BarButtonItem bbiSaveAndNew;
         public DevExpress.XtraBars.BarButtonItem bbiReset;
         public DevExpress.XtraBars.BarButtonItem bbiDelete;
         public DevExpress.XtraBars.BarButtonItem bbiClose;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem bbiAddNew;
+        public DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        public DevExpress.XtraBars.BarButtonItem bbiAddNew;
         public DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         public DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private DevExpress.XtraBars.BarButtonItem bbiLast;
-        private DevExpress.XtraBars.BarButtonItem bbiFirst;
-        private DevExpress.XtraBars.BarButtonItem bbiNext;
-        private DevExpress.XtraBars.BarButtonItem bbiPrev;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        public DevExpress.XtraBars.BarButtonItem bbiLast;
+        public DevExpress.XtraBars.BarButtonItem bbiFirst;
+        public DevExpress.XtraBars.BarButtonItem bbiNext;
+        public DevExpress.XtraBars.BarButtonItem bbiPrev;
+        public DevExpress.XtraBars.BarEditItem beiComboReports;
+        public DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        public DevExpress.XtraBars.BarButtonItem bbiPrint;
+        public DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
+        public DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgReport;
+        public System.Windows.Forms.BindingSource bs;
+        public DevExpress.XtraBars.BarButtonItem bbiEdit;
     }
 }

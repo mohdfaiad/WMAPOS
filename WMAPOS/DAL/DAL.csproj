@@ -53,92 +53,123 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sa_POS_TrxDetails.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sa_POS_TrxHeader.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Barcodes.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Branch.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CashBank.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Company.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Currency.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_CurrencyExch.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_CustomerGroup.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Cutomers.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DefaultSetting.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemCategory.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemColor.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemDefinition.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemGroup.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemGroupSections.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemPolicies.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemPrices.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemRelatedUnits.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemSize.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemSpecification.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemType.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_ItemUnit.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_operators.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PosClose.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_POS_Definition.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PrTrxDetails.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PrTrxHeader.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PrTrxPayment.cs">
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_UserGroup.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Users.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_VendorGroup.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Vendors.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_WareHouse.cs">
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="WMAPOS.Context.cs">
+    <Compile Include="PUsers.cs" />
+    <Compile Include="WMAERP.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WMAPOS.Context.tt</DependentUpon>
+      <DependentUpon>WMAERP.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="WMAPOS.cs">
+    <Compile Include="WMAERP.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WMAPOS.tt</DependentUpon>
+      <DependentUpon>WMAERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="WMAPOS.Designer.cs">
+    <Compile Include="WMAERP.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WMAPOS.edmx</DependentUpon>
+      <DependentUpon>WMAERP.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -146,27 +177,27 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="WMAPOS.edmx">
+    <EntityDeploy Include="WMAERP.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WMAPOS.Designer.cs</LastGenOutput>
+      <LastGenOutput>WMAERP.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="WMAPOS.edmx.diagram">
-      <DependentUpon>WMAPOS.edmx</DependentUpon>
+    <None Include="WMAERP.edmx.diagram">
+      <DependentUpon>WMAERP.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WMAPOS.Context.tt">
+    <Content Include="WMAERP.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WMAPOS.edmx</DependentUpon>
-      <LastGenOutput>WMAPOS.Context.cs</LastGenOutput>
+      <DependentUpon>WMAERP.edmx</DependentUpon>
+      <LastGenOutput>WMAERP.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="WMAPOS.tt">
+    <Content Include="WMAERP.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WMAPOS.edmx</DependentUpon>
-      <LastGenOutput>WMAPOS.cs</LastGenOutput>
+      <DependentUpon>WMAERP.edmx</DependentUpon>
+      <LastGenOutput>WMAERP.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

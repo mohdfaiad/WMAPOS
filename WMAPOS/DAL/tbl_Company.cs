@@ -17,6 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_Company()
         {
+            this.sa_POS_TrxHeader = new HashSet<sa_POS_TrxHeader>();
             this.tbl_Branch = new HashSet<tbl_Branch>();
             this.tbl_CustomerGroup = new HashSet<tbl_CustomerGroup>();
             this.tbl_Cutomers = new HashSet<tbl_Cutomers>();
@@ -35,6 +36,8 @@ namespace DAL
         public string CompanyNameAr { get; set; }
         public string CompanyNameEn { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<sa_POS_TrxHeader> sa_POS_TrxHeader { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Branch> tbl_Branch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -13,7 +13,7 @@ namespace BLL
             GC.SuppressFinalize(this);
         }
 
-        internal WMAPOSEntities context = new WMAPOSEntities();
+        internal WMAERPEntities context = new WMAERPEntities();
 
     }
 }

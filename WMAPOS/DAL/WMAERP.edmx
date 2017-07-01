@@ -1,0 +1,3053 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WMAERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sa_POS_TrxDetails">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="PeriodID" />
+            <PropertyRef Name="TrxLineNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxNo" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TrxType" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="YearID" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="PeriodID" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="TrxLineNo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="30" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" />
+          <Property Name="ItemService" Type="nvarchar" MaxLength="3" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ItemPrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="DiscountRatio" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="NetPrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ItemUnitCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="UnitTransValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="TrxDetailDescA" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TrxDetailDescE" Type="nvarchar" MaxLength="4000" />
+          <Property Name="SourceDocLineNo" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="sa_POS_TrxHeader">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="PeriodID" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxNo" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TrxType" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="YearID" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="PeriodID" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="TrxDate" Type="datetime" />
+          <Property Name="TrxStatus" Type="char" MaxLength="1" />
+          <Property Name="TrxDescA" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TrxDescE" Type="nvarchar" MaxLength="4000" />
+          <Property Name="IntRefrence" Type="nvarchar" MaxLength="15" />
+          <Property Name="TrxAmount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="TrxBalance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="TotalDiscount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="WarehouseCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="SourceDocNo" Type="nvarchar" MaxLength="8" />
+          <Property Name="SourceDocType" Type="nvarchar" MaxLength="4" />
+          <Property Name="TrxTime" Type="datetime" />
+          <Property Name="POSShift" Type="char" MaxLength="1" />
+          <Property Name="POSCode" Type="char" MaxLength="4" />
+          <Property Name="OperatorCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="SourceDocYearId" Type="nvarchar" MaxLength="4" />
+          <Property Name="SourceDocPeriodId" Type="nvarchar" MaxLength="2" />
+          <Property Name="CashCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="Cash" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ATM" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Visa" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Checks" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Credit" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="PayedValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="RemainderValue" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="tbl_Barcodes">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ItemService" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="1" />
+          <Property Name="ItemUnit" Type="nvarchar" MaxLength="6" />
+          <Property Name="UnitTransValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ItemColorCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ItemSizeCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="DiscountRatio" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="DiscountValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Branch">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchNameAr" Type="nvarchar" MaxLength="250" />
+          <Property Name="BranchNameEn" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tbl_CashBank">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CB_Code" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CB_Code" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CB_Type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CB_NameA" Type="nvarchar" MaxLength="100" />
+          <Property Name="CB_NameE" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_Company">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CompanyNameAr" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyNameEn" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tbl_Currency">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CurrencyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CurrencyNameA" Type="nvarchar" MaxLength="25" />
+          <Property Name="CurrencyNameE" Type="nvarchar" MaxLength="25" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_CurrencyExch">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CurrencyCode" />
+            <PropertyRef Name="BaseCurrencyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="BaseCurrencyCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="6" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerGroup">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CustomerGroupCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CustomerGroupCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CustomerGroupNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerGroupNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Cutomers">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CustomerGroupCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="CustomerNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_DefaultSetting">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="SettingDescription" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="SettingDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SettingValue" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_ItemCategory">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCategoryCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemCategoryCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ItemCategoryNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemCategoryNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemColor">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemColorCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemColorCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ItemColorNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemColorNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemDefinition">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemService" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ItemService" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="ItemNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemGroupCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ItemTypeCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ItemCategoryCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ItemUnitCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="MaxDiscountRatio" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MinQuantity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MaxQuantity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ReOrderQuantity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ItemVendorCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="OriginalItemCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemGroup">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemGroupCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemGroupCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ItemGroupNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemGroupNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="SectionCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemGroupSections">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="SectionCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="SectionCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="SectionNameA" Type="nvarchar" MaxLength="75" />
+          <Property Name="SectionNameE" Type="nvarchar" MaxLength="75" />
+          <Property Name="PrinterPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemPolicies">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="PolicyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="PolicyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="PolicyNameAr" Type="nvarchar" MaxLength="20" />
+          <Property Name="PolicyNameEn" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemPrices">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemService" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="PolicyCode" />
+            <PropertyRef Name="ItemUnit" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemService" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PolicyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemUnit" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="PriceValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="PriceRatio" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="DiscountRatio" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemRelatedUnits">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemService" />
+            <PropertyRef Name="RelateUnitCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ItemService" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="RelateUnitCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ItemSize">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemSizeCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemSizeCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ItemSizeNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemSizeNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemSpecification">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemService" />
+            <PropertyRef Name="DetailItemCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ItemService" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="DetailItemCode" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DetailItemUnit" Type="nvarchar" MaxLength="6" />
+          <Property Name="ItemQuantity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="UnitTransValue" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="tbl_ItemType">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemTypeCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemTypeCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ItemTypeNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemTypeNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemUnit">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemUnitCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="ItemUnitCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ItemUnitDescA" Type="nvarchar" MaxLength="75" />
+          <Property Name="ItemUnitDescE" Type="nvarchar" MaxLength="75" />
+          <Property Name="UnitTransCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="UnitTransValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_operators">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="OperatorCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="OperatorCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="OperatorNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="OperatorNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="75" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_POS_Definition">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="POSCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="POSCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="POSNameAr" Type="nvarchar" MaxLength="75" />
+          <Property Name="POSNameEn" Type="nvarchar" MaxLength="75" />
+          <Property Name="CashCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="OpenBalance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_PosClose">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxNo" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TrxDate" Type="datetime" />
+          <Property Name="TrxStatus" Type="char" MaxLength="1" />
+          <Property Name="TrxDescA" Type="nvarchar" MaxLength="100" />
+          <Property Name="TrxDescE" Type="nvarchar" MaxLength="100" />
+          <Property Name="POSCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="CashCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="Cash" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreditCard" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ATM" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Credit" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Checks" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="POSShift" Type="char" MaxLength="1" />
+          <Property Name="OperatorCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ActualCash" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="OldOpenBalance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="NewOpenBalance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MainCashCode" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="tbl_PrTrxDetails">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="TraLineNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TrxType" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TraLineNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ItemService" Type="nvarchar" MaxLength="4" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="25" />
+          <Property Name="ItemUnit" Type="nvarchar" MaxLength="6" />
+          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="NetPrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="UnitTransValue" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="WareHouseCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ItemCost" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="VendoreCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDAte" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="76" />
+        </EntityType>
+        <EntityType Name="tbl_PrTrxHeader">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxDate" Type="datetime" Nullable="false" />
+          <Property Name="TrxNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TrxStatus" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TrxType" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="WareHouseCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="VendoreCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="TrxAmount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="TrxBalance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="IntRefrence" Type="nvarchar" MaxLength="20" />
+          <Property Name="TotalDiscount" Type="nvarchar" MaxLength="20" />
+          <Property Name="VendoreInvoiceNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="75" />
+          <Property Name="TrxDescAr" Type="nvarchar" MaxLength="75" />
+          <Property Name="TrxDescEn" Type="nvarchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="tbl_PrTrxPayment">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="TrxLineNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TrxType" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TrxLineNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="4" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="TrxPaymentDescAr" Type="nvarchar" MaxLength="75" />
+          <Property Name="TrxPaymentDescEn" Type="nvarchar" MaxLength="75" />
+          <Property Name="VendoreCode" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tbl_UserGroup">
+          <Key>
+            <PropertyRef Name="GroupCode" />
+          </Key>
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="GroupNameA" Type="nvarchar" MaxLength="75" />
+          <Property Name="GroupNameE" Type="nvarchar" MaxLength="75" />
+          <Property Name="GroupStatus" Type="char" MaxLength="1" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullNameA" Type="nvarchar" MaxLength="250" />
+          <Property Name="FullNameE" Type="nvarchar" MaxLength="250" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserStatus" Type="nvarchar" MaxLength="1" />
+          <Property Name="IsCasher" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModefiedBy" Type="nvarchar" MaxLength="10" />
+          <Property Name="ModefiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VendorGroup">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="VendorGroupCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="VendorGroupCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="VendoreNameAr" Type="nvarchar" MaxLength="255" />
+          <Property Name="VendoreNameEn" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Vendors">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="VendoreCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="VendoreCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="VendoreGroupCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="VendoreNameAr" Type="nvarchar" MaxLength="250" />
+          <Property Name="VendoreNameEn" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_WareHouse">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="WareHouseCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="WareHouseCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="WareHouseNameAr" Type="nvarchar" MaxLength="250" />
+          <Property Name="WareHouseNameEn" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_PrTrxDetails_PrTrxDetails">
+          <End Role="tbl_PrTrxDetails" Type="Self.tbl_PrTrxDetails" Multiplicity="1" />
+          <End Role="tbl_PrTrxDetails1" Type="Self.tbl_PrTrxDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrTrxDetails">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="TraLineNo" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxDetails1">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="TraLineNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxHeader_PrTrxHeader">
+          <End Role="tbl_WareHouse" Type="Self.tbl_WareHouse" Multiplicity="0..1" />
+          <End Role="tbl_PrTrxHeader" Type="Self.tbl_PrTrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WareHouse">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="WareHouseCode" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxHeader">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="WareHouseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxHeader_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_PrTrxHeader" Type="Self.tbl_PrTrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxHeader">
+              <PropertyRef Name="CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxHeader_tbl_Vendors">
+          <End Role="tbl_Vendors" Type="Self.tbl_Vendors" Multiplicity="0..1" />
+          <End Role="tbl_PrTrxHeader" Type="Self.tbl_PrTrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Vendors">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendoreCode" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxHeader">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendoreCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sa_POS_TrxDetails_sa_POS_TrxHeader">
+          <End Role="sa_POS_TrxHeader" Type="Self.sa_POS_TrxHeader" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sa_POS_TrxDetails" Type="Self.sa_POS_TrxDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sa_POS_TrxHeader">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="YearID" />
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="sa_POS_TrxDetails">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="YearID" />
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sa_POS_TrxHeader_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="sa_POS_TrxHeader" Type="Self.sa_POS_TrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="sa_POS_TrxHeader">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Barcodes_tbl_ItemDefinition">
+          <End Role="tbl_ItemDefinition" Type="Self.tbl_ItemDefinition" Multiplicity="1" />
+          <End Role="tbl_Barcodes" Type="Self.tbl_Barcodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+            </Principal>
+            <Dependent Role="tbl_Barcodes">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Branch_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_Branch" Type="Self.tbl_Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_Branch">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CurrencyExch_Currency">
+          <End Role="tbl_Currency" Type="Self.tbl_Currency" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_CurrencyExch" Type="Self.tbl_CurrencyExch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Currency">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CurrencyCode" />
+            </Principal>
+            <Dependent Role="tbl_CurrencyExch">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CurrencyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CustomerGroup_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_CustomerGroup" Type="Self.tbl_CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_CustomerGroup">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Cutomers_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_Cutomers" Type="Self.tbl_Cutomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_Cutomers">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Cutomers_tbl_CustomerGroup">
+          <End Role="tbl_CustomerGroup" Type="Self.tbl_CustomerGroup" Multiplicity="0..1" />
+          <End Role="tbl_Cutomers" Type="Self.tbl_Cutomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CustomerGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CustomerGroupCode" />
+            </Principal>
+            <Dependent Role="tbl_Cutomers">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CustomerGroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemCategory_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_ItemCategory" Type="Self.tbl_ItemCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemCategory">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemCategory_tbl_ItemCategory">
+          <End Role="tbl_ItemCategory" Type="Self.tbl_ItemCategory" Multiplicity="1" />
+          <End Role="tbl_ItemCategory1" Type="Self.tbl_ItemCategory" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemCategory">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemCategory1">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemColor_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_ItemColor" Type="Self.tbl_ItemColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemColor">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_ItemDefinition" Type="Self.tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemCategory">
+          <End Role="tbl_ItemCategory" Type="Self.tbl_ItemCategory" Multiplicity="0..1" />
+          <End Role="tbl_ItemDefinition" Type="Self.tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemCategory">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemGroup">
+          <End Role="tbl_ItemGroup" Type="Self.tbl_ItemGroup" Multiplicity="0..1" />
+          <End Role="tbl_ItemDefinition" Type="Self.tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemGroupCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemGroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemType">
+          <End Role="tbl_ItemType" Type="Self.tbl_ItemType" Multiplicity="0..1" />
+          <End Role="tbl_ItemDefinition" Type="Self.tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemType">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemTypeCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemUnit">
+          <End Role="tbl_ItemUnit" Type="Self.tbl_ItemUnit" Multiplicity="0..1" />
+          <End Role="tbl_ItemDefinition" Type="Self.tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemUnit">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemUnitCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemUnitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemGroup_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_ItemGroup" Type="Self.tbl_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemGroup">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemGroup_tbl_ItemGroupSections">
+          <End Role="tbl_ItemGroupSections" Type="Self.tbl_ItemGroupSections" Multiplicity="0..1" />
+          <End Role="tbl_ItemGroup" Type="Self.tbl_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemGroupSections">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="SectionCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="SectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemSize_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_ItemSize" Type="Self.tbl_ItemSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemSize">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemSpecification_tbl_ItemSpecification">
+          <End Role="tbl_ItemSpecification" Type="Self.tbl_ItemSpecification" Multiplicity="1" />
+          <End Role="tbl_ItemSpecification1" Type="Self.tbl_ItemSpecification" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemSpecification">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+              <PropertyRef Name="DetailItemCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemSpecification1">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+              <PropertyRef Name="DetailItemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemType_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_ItemType" Type="Self.tbl_ItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemType">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_operators_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_operators" Type="Self.tbl_operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_operators">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_operators_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_operators" Type="Self.tbl_operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_operators">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_CashBank">
+          <End Role="tbl_CashBank" Type="Self.tbl_CashBank" Multiplicity="0..1" />
+          <End Role="tbl_PosClose" Type="Self.tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CashBank">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CB_Code" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CashCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_CashBank1">
+          <End Role="tbl_CashBank" Type="Self.tbl_CashBank" Multiplicity="0..1" />
+          <End Role="tbl_PosClose" Type="Self.tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CashBank">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CB_Code" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BankCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_POS_Definition">
+          <End Role="tbl_POS_Definition" Type="Self.tbl_POS_Definition" Multiplicity="0..1" />
+          <End Role="tbl_PosClose" Type="Self.tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_POS_Definition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="POSCode" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="POSCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_PosClose">
+          <End Role="tbl_operators" Type="Self.tbl_operators" Multiplicity="0..1" />
+          <End Role="tbl_PosClose" Type="Self.tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_operators">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="OperatorCode" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="OperatorCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_UserGroup">
+          <End Role="tbl_UserGroup" Type="Self.tbl_UserGroup" Multiplicity="0..1" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserGroup">
+              <PropertyRef Name="GroupCode" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="GroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VendorGroup_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_VendorGroup" Type="Self.tbl_VendorGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_VendorGroup">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Vendors_tbl_VendorGroup">
+          <End Role="tbl_VendorGroup" Type="Self.tbl_VendorGroup" Multiplicity="0..1" />
+          <End Role="tbl_Vendors" Type="Self.tbl_Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VendorGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendorGroupCode" />
+            </Principal>
+            <Dependent Role="tbl_Vendors">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendoreGroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_WareHouse_tbl_Company">
+          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
+          <End Role="tbl_WareHouse" Type="Self.tbl_WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_WareHouse">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WMAERPModelStoreContainer">
+          <EntitySet Name="sa_POS_TrxDetails" EntityType="Self.sa_POS_TrxDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sa_POS_TrxHeader" EntityType="Self.sa_POS_TrxHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Barcodes" EntityType="Self.tbl_Barcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Branch" EntityType="Self.tbl_Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CashBank" EntityType="Self.tbl_CashBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Currency" EntityType="Self.tbl_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CurrencyExch" EntityType="Self.tbl_CurrencyExch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CustomerGroup" EntityType="Self.tbl_CustomerGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Cutomers" EntityType="Self.tbl_Cutomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_DefaultSetting" EntityType="Self.tbl_DefaultSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemCategory" EntityType="Self.tbl_ItemCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemColor" EntityType="Self.tbl_ItemColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemDefinition" EntityType="Self.tbl_ItemDefinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemGroup" EntityType="Self.tbl_ItemGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemGroupSections" EntityType="Self.tbl_ItemGroupSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemPolicies" EntityType="Self.tbl_ItemPolicies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemPrices" EntityType="Self.tbl_ItemPrices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemRelatedUnits" EntityType="Self.tbl_ItemRelatedUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemSize" EntityType="Self.tbl_ItemSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemSpecification" EntityType="Self.tbl_ItemSpecification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemType" EntityType="Self.tbl_ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemUnit" EntityType="Self.tbl_ItemUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_operators" EntityType="Self.tbl_operators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_POS_Definition" EntityType="Self.tbl_POS_Definition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PosClose" EntityType="Self.tbl_PosClose" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrTrxDetails" EntityType="Self.tbl_PrTrxDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrTrxHeader" EntityType="Self.tbl_PrTrxHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrTrxPayment" EntityType="Self.tbl_PrTrxPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserGroup" EntityType="Self.tbl_UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_VendorGroup" EntityType="Self.tbl_VendorGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Vendors" EntityType="Self.tbl_Vendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_WareHouse" EntityType="Self.tbl_WareHouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PrTrxDetails_PrTrxDetails" Association="Self.FK_PrTrxDetails_PrTrxDetails">
+            <End Role="tbl_PrTrxDetails" EntitySet="tbl_PrTrxDetails" />
+            <End Role="tbl_PrTrxDetails1" EntitySet="tbl_PrTrxDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxHeader_PrTrxHeader" Association="Self.FK_PrTrxHeader_PrTrxHeader">
+            <End Role="tbl_WareHouse" EntitySet="tbl_WareHouse" />
+            <End Role="tbl_PrTrxHeader" EntitySet="tbl_PrTrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxHeader_tbl_Users" Association="Self.FK_PrTrxHeader_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrTrxHeader" EntitySet="tbl_PrTrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxHeader_tbl_Vendors" Association="Self.FK_PrTrxHeader_tbl_Vendors">
+            <End Role="tbl_Vendors" EntitySet="tbl_Vendors" />
+            <End Role="tbl_PrTrxHeader" EntitySet="tbl_PrTrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sa_POS_TrxDetails_sa_POS_TrxHeader" Association="Self.FK_sa_POS_TrxDetails_sa_POS_TrxHeader">
+            <End Role="sa_POS_TrxHeader" EntitySet="sa_POS_TrxHeader" />
+            <End Role="sa_POS_TrxDetails" EntitySet="sa_POS_TrxDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sa_POS_TrxHeader_tbl_Company" Association="Self.FK_sa_POS_TrxHeader_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="sa_POS_TrxHeader" EntitySet="sa_POS_TrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Barcodes_tbl_ItemDefinition" Association="Self.FK_tbl_Barcodes_tbl_ItemDefinition">
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+            <End Role="tbl_Barcodes" EntitySet="tbl_Barcodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Branch_tbl_Company" Association="Self.FK_tbl_Branch_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Branch" EntitySet="tbl_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CurrencyExch_Currency" Association="Self.FK_tbl_CurrencyExch_Currency">
+            <End Role="tbl_Currency" EntitySet="tbl_Currency" />
+            <End Role="tbl_CurrencyExch" EntitySet="tbl_CurrencyExch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CustomerGroup_tbl_Company" Association="Self.FK_tbl_CustomerGroup_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_CustomerGroup" EntitySet="tbl_CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Cutomers_tbl_Company" Association="Self.FK_tbl_Cutomers_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Cutomers" EntitySet="tbl_Cutomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Cutomers_tbl_CustomerGroup" Association="Self.FK_tbl_Cutomers_tbl_CustomerGroup">
+            <End Role="tbl_CustomerGroup" EntitySet="tbl_CustomerGroup" />
+            <End Role="tbl_Cutomers" EntitySet="tbl_Cutomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemCategory_tbl_Company" Association="Self.FK_tbl_ItemCategory_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemCategory" EntitySet="tbl_ItemCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemCategory_tbl_ItemCategory" Association="Self.FK_tbl_ItemCategory_tbl_ItemCategory">
+            <End Role="tbl_ItemCategory" EntitySet="tbl_ItemCategory" />
+            <End Role="tbl_ItemCategory1" EntitySet="tbl_ItemCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemColor_tbl_Company" Association="Self.FK_tbl_ItemColor_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemColor" EntitySet="tbl_ItemColor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_Company" Association="Self.FK_tbl_ItemDefinition_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemCategory" Association="Self.FK_tbl_ItemDefinition_tbl_ItemCategory">
+            <End Role="tbl_ItemCategory" EntitySet="tbl_ItemCategory" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemGroup" Association="Self.FK_tbl_ItemDefinition_tbl_ItemGroup">
+            <End Role="tbl_ItemGroup" EntitySet="tbl_ItemGroup" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemType" Association="Self.FK_tbl_ItemDefinition_tbl_ItemType">
+            <End Role="tbl_ItemType" EntitySet="tbl_ItemType" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemUnit" Association="Self.FK_tbl_ItemDefinition_tbl_ItemUnit">
+            <End Role="tbl_ItemUnit" EntitySet="tbl_ItemUnit" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemGroup_tbl_Company" Association="Self.FK_tbl_ItemGroup_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemGroup" EntitySet="tbl_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemGroup_tbl_ItemGroupSections" Association="Self.FK_tbl_ItemGroup_tbl_ItemGroupSections">
+            <End Role="tbl_ItemGroupSections" EntitySet="tbl_ItemGroupSections" />
+            <End Role="tbl_ItemGroup" EntitySet="tbl_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemSize_tbl_Company" Association="Self.FK_tbl_ItemSize_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemSize" EntitySet="tbl_ItemSize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemSpecification_tbl_ItemSpecification" Association="Self.FK_tbl_ItemSpecification_tbl_ItemSpecification">
+            <End Role="tbl_ItemSpecification" EntitySet="tbl_ItemSpecification" />
+            <End Role="tbl_ItemSpecification1" EntitySet="tbl_ItemSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemType_tbl_Company" Association="Self.FK_tbl_ItemType_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemType" EntitySet="tbl_ItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_operators_tbl_Company" Association="Self.FK_tbl_operators_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_operators" EntitySet="tbl_operators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_operators_tbl_Users" Association="Self.FK_tbl_operators_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_operators" EntitySet="tbl_operators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_CashBank" Association="Self.FK_tbl_PosClose_tbl_CashBank">
+            <End Role="tbl_CashBank" EntitySet="tbl_CashBank" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_CashBank1" Association="Self.FK_tbl_PosClose_tbl_CashBank1">
+            <End Role="tbl_CashBank" EntitySet="tbl_CashBank" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_POS_Definition" Association="Self.FK_tbl_PosClose_tbl_POS_Definition">
+            <End Role="tbl_POS_Definition" EntitySet="tbl_POS_Definition" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_PosClose" Association="Self.FK_tbl_PosClose_tbl_PosClose">
+            <End Role="tbl_operators" EntitySet="tbl_operators" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_UserGroup" Association="Self.FK_tbl_Users_tbl_UserGroup">
+            <End Role="tbl_UserGroup" EntitySet="tbl_UserGroup" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VendorGroup_tbl_Company" Association="Self.FK_tbl_VendorGroup_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_VendorGroup" EntitySet="tbl_VendorGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Vendors_tbl_VendorGroup" Association="Self.FK_tbl_Vendors_tbl_VendorGroup">
+            <End Role="tbl_VendorGroup" EntitySet="tbl_VendorGroup" />
+            <End Role="tbl_Vendors" EntitySet="tbl_Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_WareHouse_tbl_Company" Association="Self.FK_tbl_WareHouse_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_WareHouse" EntitySet="tbl_WareHouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WMAERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WMAERPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sa_POS_TrxDetails" EntityType="WMAERPModel.sa_POS_TrxDetails" />
+          <EntitySet Name="sa_POS_TrxHeader" EntityType="WMAERPModel.sa_POS_TrxHeader" />
+          <EntitySet Name="tbl_Barcodes" EntityType="WMAERPModel.tbl_Barcodes" />
+          <EntitySet Name="tbl_Branch" EntityType="WMAERPModel.tbl_Branch" />
+          <EntitySet Name="tbl_CashBank" EntityType="WMAERPModel.tbl_CashBank" />
+          <EntitySet Name="tbl_Company" EntityType="WMAERPModel.tbl_Company" />
+          <EntitySet Name="tbl_Currency" EntityType="WMAERPModel.tbl_Currency" />
+          <EntitySet Name="tbl_CurrencyExch" EntityType="WMAERPModel.tbl_CurrencyExch" />
+          <EntitySet Name="tbl_CustomerGroup" EntityType="WMAERPModel.tbl_CustomerGroup" />
+          <EntitySet Name="tbl_Cutomers" EntityType="WMAERPModel.tbl_Cutomers" />
+          <EntitySet Name="tbl_DefaultSetting" EntityType="WMAERPModel.tbl_DefaultSetting" />
+          <EntitySet Name="tbl_ItemCategory" EntityType="WMAERPModel.tbl_ItemCategory" />
+          <EntitySet Name="tbl_ItemColor" EntityType="WMAERPModel.tbl_ItemColor" />
+          <EntitySet Name="tbl_ItemDefinition" EntityType="WMAERPModel.tbl_ItemDefinition" />
+          <EntitySet Name="tbl_ItemGroup" EntityType="WMAERPModel.tbl_ItemGroup" />
+          <EntitySet Name="tbl_ItemGroupSections" EntityType="WMAERPModel.tbl_ItemGroupSections" />
+          <EntitySet Name="tbl_ItemPolicies" EntityType="WMAERPModel.tbl_ItemPolicies" />
+          <EntitySet Name="tbl_ItemPrices" EntityType="WMAERPModel.tbl_ItemPrices" />
+          <EntitySet Name="tbl_ItemRelatedUnits" EntityType="WMAERPModel.tbl_ItemRelatedUnits" />
+          <EntitySet Name="tbl_ItemSize" EntityType="WMAERPModel.tbl_ItemSize" />
+          <EntitySet Name="tbl_ItemSpecification" EntityType="WMAERPModel.tbl_ItemSpecification" />
+          <EntitySet Name="tbl_ItemType" EntityType="WMAERPModel.tbl_ItemType" />
+          <EntitySet Name="tbl_ItemUnit" EntityType="WMAERPModel.tbl_ItemUnit" />
+          <EntitySet Name="tbl_operators" EntityType="WMAERPModel.tbl_operators" />
+          <EntitySet Name="tbl_POS_Definition" EntityType="WMAERPModel.tbl_POS_Definition" />
+          <EntitySet Name="tbl_PosClose" EntityType="WMAERPModel.tbl_PosClose" />
+          <EntitySet Name="tbl_PrTrxDetails" EntityType="WMAERPModel.tbl_PrTrxDetails" />
+          <EntitySet Name="tbl_PrTrxHeader" EntityType="WMAERPModel.tbl_PrTrxHeader" />
+          <EntitySet Name="tbl_PrTrxPayment" EntityType="WMAERPModel.tbl_PrTrxPayment" />
+          <EntitySet Name="tbl_UserGroup" EntityType="WMAERPModel.tbl_UserGroup" />
+          <EntitySet Name="tbl_Users" EntityType="WMAERPModel.tbl_Users" />
+          <EntitySet Name="tbl_VendorGroup" EntityType="WMAERPModel.tbl_VendorGroup" />
+          <EntitySet Name="tbl_Vendors" EntityType="WMAERPModel.tbl_Vendors" />
+          <EntitySet Name="tbl_WareHouse" EntityType="WMAERPModel.tbl_WareHouse" />
+          <AssociationSet Name="FK_sa_POS_TrxDetails_sa_POS_TrxHeader" Association="WMAERPModel.FK_sa_POS_TrxDetails_sa_POS_TrxHeader">
+            <End Role="sa_POS_TrxHeader" EntitySet="sa_POS_TrxHeader" />
+            <End Role="sa_POS_TrxDetails" EntitySet="sa_POS_TrxDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sa_POS_TrxHeader_tbl_Company" Association="WMAERPModel.FK_sa_POS_TrxHeader_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="sa_POS_TrxHeader" EntitySet="sa_POS_TrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Barcodes_tbl_ItemDefinition" Association="WMAERPModel.FK_tbl_Barcodes_tbl_ItemDefinition">
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+            <End Role="tbl_Barcodes" EntitySet="tbl_Barcodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Branch_tbl_Company" Association="WMAERPModel.FK_tbl_Branch_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Branch" EntitySet="tbl_Branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_CashBank" Association="WMAERPModel.FK_tbl_PosClose_tbl_CashBank">
+            <End Role="tbl_CashBank" EntitySet="tbl_CashBank" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_CashBank1" Association="WMAERPModel.FK_tbl_PosClose_tbl_CashBank1">
+            <End Role="tbl_CashBank" EntitySet="tbl_CashBank" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CustomerGroup_tbl_Company" Association="WMAERPModel.FK_tbl_CustomerGroup_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_CustomerGroup" EntitySet="tbl_CustomerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Cutomers_tbl_Company" Association="WMAERPModel.FK_tbl_Cutomers_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_Cutomers" EntitySet="tbl_Cutomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemCategory_tbl_Company" Association="WMAERPModel.FK_tbl_ItemCategory_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemCategory" EntitySet="tbl_ItemCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemColor_tbl_Company" Association="WMAERPModel.FK_tbl_ItemColor_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemColor" EntitySet="tbl_ItemColor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_Company" Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemGroup_tbl_Company" Association="WMAERPModel.FK_tbl_ItemGroup_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemGroup" EntitySet="tbl_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemSize_tbl_Company" Association="WMAERPModel.FK_tbl_ItemSize_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemSize" EntitySet="tbl_ItemSize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemType_tbl_Company" Association="WMAERPModel.FK_tbl_ItemType_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_ItemType" EntitySet="tbl_ItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_operators_tbl_Company" Association="WMAERPModel.FK_tbl_operators_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_operators" EntitySet="tbl_operators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VendorGroup_tbl_Company" Association="WMAERPModel.FK_tbl_VendorGroup_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_VendorGroup" EntitySet="tbl_VendorGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_WareHouse_tbl_Company" Association="WMAERPModel.FK_tbl_WareHouse_tbl_Company">
+            <End Role="tbl_Company" EntitySet="tbl_Company" />
+            <End Role="tbl_WareHouse" EntitySet="tbl_WareHouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CurrencyExch_Currency" Association="WMAERPModel.FK_tbl_CurrencyExch_Currency">
+            <End Role="tbl_Currency" EntitySet="tbl_Currency" />
+            <End Role="tbl_CurrencyExch" EntitySet="tbl_CurrencyExch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Cutomers_tbl_CustomerGroup" Association="WMAERPModel.FK_tbl_Cutomers_tbl_CustomerGroup">
+            <End Role="tbl_CustomerGroup" EntitySet="tbl_CustomerGroup" />
+            <End Role="tbl_Cutomers" EntitySet="tbl_Cutomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemCategory_tbl_ItemCategory" Association="WMAERPModel.FK_tbl_ItemCategory_tbl_ItemCategory">
+            <End Role="tbl_ItemCategory" EntitySet="tbl_ItemCategory" />
+            <End Role="tbl_ItemCategory1" EntitySet="tbl_ItemCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemCategory" Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemCategory">
+            <End Role="tbl_ItemCategory" EntitySet="tbl_ItemCategory" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemGroup" Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemGroup">
+            <End Role="tbl_ItemGroup" EntitySet="tbl_ItemGroup" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemType" Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemType">
+            <End Role="tbl_ItemType" EntitySet="tbl_ItemType" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemDefinition_tbl_ItemUnit" Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemUnit">
+            <End Role="tbl_ItemUnit" EntitySet="tbl_ItemUnit" />
+            <End Role="tbl_ItemDefinition" EntitySet="tbl_ItemDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemGroup_tbl_ItemGroupSections" Association="WMAERPModel.FK_tbl_ItemGroup_tbl_ItemGroupSections">
+            <End Role="tbl_ItemGroupSections" EntitySet="tbl_ItemGroupSections" />
+            <End Role="tbl_ItemGroup" EntitySet="tbl_ItemGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ItemSpecification_tbl_ItemSpecification" Association="WMAERPModel.FK_tbl_ItemSpecification_tbl_ItemSpecification">
+            <End Role="tbl_ItemSpecification" EntitySet="tbl_ItemSpecification" />
+            <End Role="tbl_ItemSpecification1" EntitySet="tbl_ItemSpecification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_operators_tbl_Users" Association="WMAERPModel.FK_tbl_operators_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_operators" EntitySet="tbl_operators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_PosClose" Association="WMAERPModel.FK_tbl_PosClose_tbl_PosClose">
+            <End Role="tbl_operators" EntitySet="tbl_operators" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PosClose_tbl_POS_Definition" Association="WMAERPModel.FK_tbl_PosClose_tbl_POS_Definition">
+            <End Role="tbl_POS_Definition" EntitySet="tbl_POS_Definition" />
+            <End Role="tbl_PosClose" EntitySet="tbl_PosClose" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxDetails_PrTrxDetails" Association="WMAERPModel.FK_PrTrxDetails_PrTrxDetails">
+            <End Role="tbl_PrTrxDetails" EntitySet="tbl_PrTrxDetails" />
+            <End Role="tbl_PrTrxDetails1" EntitySet="tbl_PrTrxDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxHeader_PrTrxHeader" Association="WMAERPModel.FK_PrTrxHeader_PrTrxHeader">
+            <End Role="tbl_WareHouse" EntitySet="tbl_WareHouse" />
+            <End Role="tbl_PrTrxHeader" EntitySet="tbl_PrTrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxHeader_tbl_Users" Association="WMAERPModel.FK_PrTrxHeader_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrTrxHeader" EntitySet="tbl_PrTrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrTrxHeader_tbl_Vendors" Association="WMAERPModel.FK_PrTrxHeader_tbl_Vendors">
+            <End Role="tbl_Vendors" EntitySet="tbl_Vendors" />
+            <End Role="tbl_PrTrxHeader" EntitySet="tbl_PrTrxHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_UserGroup" Association="WMAERPModel.FK_tbl_Users_tbl_UserGroup">
+            <End Role="tbl_UserGroup" EntitySet="tbl_UserGroup" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Vendors_tbl_VendorGroup" Association="WMAERPModel.FK_tbl_Vendors_tbl_VendorGroup">
+            <End Role="tbl_VendorGroup" EntitySet="tbl_VendorGroup" />
+            <End Role="tbl_Vendors" EntitySet="tbl_Vendors" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sa_POS_TrxDetails">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="PeriodID" />
+            <PropertyRef Name="TrxLineNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxNo" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TrxType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="YearID" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodID" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="TrxLineNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Barcode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ItemPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="DiscountRatio" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="NetPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ItemUnitCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="UnitTransValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TrxDetailDescA" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDetailDescE" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="SourceDocLineNo" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="sa_POS_TrxHeader" Relationship="WMAERPModel.FK_sa_POS_TrxDetails_sa_POS_TrxHeader" FromRole="sa_POS_TrxDetails" ToRole="sa_POS_TrxHeader" />
+        </EntityType>
+        <EntityType Name="sa_POS_TrxHeader">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="PeriodID" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxNo" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TrxType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="YearID" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodID" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDate" Type="DateTime" Precision="3" />
+          <Property Name="TrxStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TrxDescA" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDescE" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IntRefrence" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TrxAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TrxBalance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TotalDiscount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CustomerCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="WarehouseCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SourceDocNo" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SourceDocType" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxTime" Type="DateTime" Precision="3" />
+          <Property Name="POSShift" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="POSCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="OperatorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SourceDocYearId" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="SourceDocPeriodId" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CashCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BankCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Cash" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ATM" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Visa" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Checks" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Credit" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="PayedValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="RemainderValue" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="sa_POS_TrxDetails" Relationship="WMAERPModel.FK_sa_POS_TrxDetails_sa_POS_TrxHeader" FromRole="sa_POS_TrxHeader" ToRole="sa_POS_TrxDetails" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_sa_POS_TrxHeader_tbl_Company" FromRole="sa_POS_TrxHeader" ToRole="tbl_Company" />
+        </EntityType>
+        <EntityType Name="tbl_Barcodes">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="UnitTransValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ItemColorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemSizeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountRatio" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="DiscountValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemDefinition" Relationship="WMAERPModel.FK_tbl_Barcodes_tbl_ItemDefinition" FromRole="tbl_Barcodes" ToRole="tbl_ItemDefinition" />
+        </EntityType>
+        <EntityType Name="tbl_Branch">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchNameAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BranchNameEn" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_Branch_tbl_Company" FromRole="tbl_Branch" ToRole="tbl_Company" />
+        </EntityType>
+        <EntityType Name="tbl_CashBank">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CB_Code" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CB_Code" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CB_Type" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CB_NameA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CB_NameE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PosClose" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_CashBank" FromRole="tbl_CashBank" ToRole="tbl_PosClose" />
+          <NavigationProperty Name="tbl_PosClose1" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_CashBank1" FromRole="tbl_CashBank" ToRole="tbl_PosClose" />
+        </EntityType>
+        <EntityType Name="tbl_Company">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyNameAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyNameEn" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sa_POS_TrxHeader" Relationship="WMAERPModel.FK_sa_POS_TrxHeader_tbl_Company" FromRole="tbl_Company" ToRole="sa_POS_TrxHeader" />
+          <NavigationProperty Name="tbl_Branch" Relationship="WMAERPModel.FK_tbl_Branch_tbl_Company" FromRole="tbl_Company" ToRole="tbl_Branch" />
+          <NavigationProperty Name="tbl_CustomerGroup" Relationship="WMAERPModel.FK_tbl_CustomerGroup_tbl_Company" FromRole="tbl_Company" ToRole="tbl_CustomerGroup" />
+          <NavigationProperty Name="tbl_Cutomers" Relationship="WMAERPModel.FK_tbl_Cutomers_tbl_Company" FromRole="tbl_Company" ToRole="tbl_Cutomers" />
+          <NavigationProperty Name="tbl_ItemCategory" Relationship="WMAERPModel.FK_tbl_ItemCategory_tbl_Company" FromRole="tbl_Company" ToRole="tbl_ItemCategory" />
+          <NavigationProperty Name="tbl_ItemColor" Relationship="WMAERPModel.FK_tbl_ItemColor_tbl_Company" FromRole="tbl_Company" ToRole="tbl_ItemColor" />
+          <NavigationProperty Name="tbl_ItemDefinition" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_Company" FromRole="tbl_Company" ToRole="tbl_ItemDefinition" />
+          <NavigationProperty Name="tbl_ItemGroup" Relationship="WMAERPModel.FK_tbl_ItemGroup_tbl_Company" FromRole="tbl_Company" ToRole="tbl_ItemGroup" />
+          <NavigationProperty Name="tbl_ItemSize" Relationship="WMAERPModel.FK_tbl_ItemSize_tbl_Company" FromRole="tbl_Company" ToRole="tbl_ItemSize" />
+          <NavigationProperty Name="tbl_ItemType" Relationship="WMAERPModel.FK_tbl_ItemType_tbl_Company" FromRole="tbl_Company" ToRole="tbl_ItemType" />
+          <NavigationProperty Name="tbl_operators" Relationship="WMAERPModel.FK_tbl_operators_tbl_Company" FromRole="tbl_Company" ToRole="tbl_operators" />
+          <NavigationProperty Name="tbl_VendorGroup" Relationship="WMAERPModel.FK_tbl_VendorGroup_tbl_Company" FromRole="tbl_Company" ToRole="tbl_VendorGroup" />
+          <NavigationProperty Name="tbl_WareHouse" Relationship="WMAERPModel.FK_tbl_WareHouse_tbl_Company" FromRole="tbl_Company" ToRole="tbl_WareHouse" />
+        </EntityType>
+        <EntityType Name="tbl_Currency">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CurrencyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyNameA" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyNameE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_CurrencyExch" Relationship="WMAERPModel.FK_tbl_CurrencyExch_Currency" FromRole="tbl_Currency" ToRole="tbl_CurrencyExch" />
+        </EntityType>
+        <EntityType Name="tbl_CurrencyExch">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CurrencyCode" />
+            <PropertyRef Name="BaseCurrencyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="BaseCurrencyCode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="18" Scale="6" />
+          <NavigationProperty Name="tbl_Currency" Relationship="WMAERPModel.FK_tbl_CurrencyExch_Currency" FromRole="tbl_CurrencyExch" ToRole="tbl_Currency" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerGroup">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CustomerGroupCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerGroupCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerGroupNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerGroupNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_CustomerGroup_tbl_Company" FromRole="tbl_CustomerGroup" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_Cutomers" Relationship="WMAERPModel.FK_tbl_Cutomers_tbl_CustomerGroup" FromRole="tbl_CustomerGroup" ToRole="tbl_Cutomers" />
+        </EntityType>
+        <EntityType Name="tbl_Cutomers">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerGroupCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_Cutomers_tbl_Company" FromRole="tbl_Cutomers" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_CustomerGroup" Relationship="WMAERPModel.FK_tbl_Cutomers_tbl_CustomerGroup" FromRole="tbl_Cutomers" ToRole="tbl_CustomerGroup" />
+        </EntityType>
+        <EntityType Name="tbl_DefaultSetting">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="SettingDescription" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="SettingDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SettingValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_ItemCategory">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCategoryCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategoryCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategoryNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategoryNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_ItemCategory_tbl_Company" FromRole="tbl_ItemCategory" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_ItemCategory1" Relationship="WMAERPModel.FK_tbl_ItemCategory_tbl_ItemCategory" FromRole="tbl_ItemCategory" ToRole="tbl_ItemCategory1" />
+          <NavigationProperty Name="tbl_ItemCategory2" Relationship="WMAERPModel.FK_tbl_ItemCategory_tbl_ItemCategory" FromRole="tbl_ItemCategory1" ToRole="tbl_ItemCategory" />
+          <NavigationProperty Name="tbl_ItemDefinition" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemCategory" FromRole="tbl_ItemCategory" ToRole="tbl_ItemDefinition" />
+        </EntityType>
+        <EntityType Name="tbl_ItemColor">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemColorCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemColorCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemColorNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemColorNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_ItemColor_tbl_Company" FromRole="tbl_ItemColor" ToRole="tbl_Company" />
+        </EntityType>
+        <EntityType Name="tbl_ItemDefinition">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemService" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ItemNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemTypeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCategoryCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnitCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="MaxDiscountRatio" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MinQuantity" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MaxQuantity" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ReOrderQuantity" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ItemVendorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Barcodes" Relationship="WMAERPModel.FK_tbl_Barcodes_tbl_ItemDefinition" FromRole="tbl_ItemDefinition" ToRole="tbl_Barcodes" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_Company" FromRole="tbl_ItemDefinition" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_ItemCategory" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemCategory" FromRole="tbl_ItemDefinition" ToRole="tbl_ItemCategory" />
+          <NavigationProperty Name="tbl_ItemGroup" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemGroup" FromRole="tbl_ItemDefinition" ToRole="tbl_ItemGroup" />
+          <NavigationProperty Name="tbl_ItemType" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemType" FromRole="tbl_ItemDefinition" ToRole="tbl_ItemType" />
+          <NavigationProperty Name="tbl_ItemUnit" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemUnit" FromRole="tbl_ItemDefinition" ToRole="tbl_ItemUnit" />
+        </EntityType>
+        <EntityType Name="tbl_ItemGroup">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemGroupCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemGroupNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SectionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_ItemGroup_tbl_Company" FromRole="tbl_ItemGroup" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_ItemDefinition" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemGroup" FromRole="tbl_ItemGroup" ToRole="tbl_ItemDefinition" />
+          <NavigationProperty Name="tbl_ItemGroupSections" Relationship="WMAERPModel.FK_tbl_ItemGroup_tbl_ItemGroupSections" FromRole="tbl_ItemGroup" ToRole="tbl_ItemGroupSections" />
+        </EntityType>
+        <EntityType Name="tbl_ItemGroupSections">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="SectionCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="SectionCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="SectionNameA" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="SectionNameE" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="PrinterPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemGroup" Relationship="WMAERPModel.FK_tbl_ItemGroup_tbl_ItemGroupSections" FromRole="tbl_ItemGroupSections" ToRole="tbl_ItemGroup" />
+        </EntityType>
+        <EntityType Name="tbl_ItemPolicies">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="PolicyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyNameAr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyNameEn" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ItemPrices">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemService" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="PolicyCode" />
+            <PropertyRef Name="ItemUnit" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnit" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="PriceValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PriceRatio" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="DiscountRatio" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ItemRelatedUnits">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemService" />
+            <PropertyRef Name="RelateUnitCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="RelateUnitCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_ItemSize">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemSizeCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemSizeCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemSizeNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemSizeNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_ItemSize_tbl_Company" FromRole="tbl_ItemSize" ToRole="tbl_Company" />
+        </EntityType>
+        <EntityType Name="tbl_ItemSpecification">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemService" />
+            <PropertyRef Name="DetailItemCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="DetailItemCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DetailItemUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemQuantity" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="UnitTransValue" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="tbl_ItemSpecification1" Relationship="WMAERPModel.FK_tbl_ItemSpecification_tbl_ItemSpecification" FromRole="tbl_ItemSpecification" ToRole="tbl_ItemSpecification1" />
+          <NavigationProperty Name="tbl_ItemSpecification2" Relationship="WMAERPModel.FK_tbl_ItemSpecification_tbl_ItemSpecification" FromRole="tbl_ItemSpecification1" ToRole="tbl_ItemSpecification" />
+        </EntityType>
+        <EntityType Name="tbl_ItemType">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemTypeCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemTypeCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemTypeNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ItemTypeNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_ItemType_tbl_Company" FromRole="tbl_ItemType" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_ItemDefinition" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemType" FromRole="tbl_ItemType" ToRole="tbl_ItemDefinition" />
+        </EntityType>
+        <EntityType Name="tbl_ItemUnit">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="ItemUnitCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnitCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnitDescA" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnitDescE" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="UnitTransCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="UnitTransValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemDefinition" Relationship="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemUnit" FromRole="tbl_ItemUnit" ToRole="tbl_ItemDefinition" />
+        </EntityType>
+        <EntityType Name="tbl_operators">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="OperatorCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_operators_tbl_Company" FromRole="tbl_operators" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_Users" Relationship="WMAERPModel.FK_tbl_operators_tbl_Users" FromRole="tbl_operators" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_PosClose" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_PosClose" FromRole="tbl_operators" ToRole="tbl_PosClose" />
+        </EntityType>
+        <EntityType Name="tbl_POS_Definition">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="POSCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="POSCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="POSNameAr" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="POSNameEn" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="CashCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BankCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OpenBalance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_PosClose" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_POS_Definition" FromRole="tbl_POS_Definition" ToRole="tbl_PosClose" />
+        </EntityType>
+        <EntityType Name="tbl_PosClose">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxNo" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDate" Type="DateTime" Precision="3" />
+          <Property Name="TrxStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TrxDescA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDescE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POSCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CashCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BankCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Cash" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreditCard" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ATM" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Credit" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Checks" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="POSShift" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OperatorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ActualCash" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="OldOpenBalance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="NewOpenBalance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MainCashCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tbl_CashBank" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_CashBank" FromRole="tbl_PosClose" ToRole="tbl_CashBank" />
+          <NavigationProperty Name="tbl_CashBank1" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_CashBank1" FromRole="tbl_PosClose" ToRole="tbl_CashBank" />
+          <NavigationProperty Name="tbl_operators" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_PosClose" FromRole="tbl_PosClose" ToRole="tbl_operators" />
+          <NavigationProperty Name="tbl_POS_Definition" Relationship="WMAERPModel.FK_tbl_PosClose_tbl_POS_Definition" FromRole="tbl_PosClose" ToRole="tbl_POS_Definition" />
+        </EntityType>
+        <EntityType Name="tbl_PrTrxDetails">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="TraLineNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TrxType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TraLineNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ItemService" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="NetPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="UnitTransValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="BarCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="WareHouseCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCost" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="VendoreCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDAte" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="76" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_PrTrxDetails1" Relationship="WMAERPModel.FK_PrTrxDetails_PrTrxDetails" FromRole="tbl_PrTrxDetails" ToRole="tbl_PrTrxDetails1" />
+          <NavigationProperty Name="tbl_PrTrxDetails2" Relationship="WMAERPModel.FK_PrTrxDetails_PrTrxDetails" FromRole="tbl_PrTrxDetails1" ToRole="tbl_PrTrxDetails" />
+        </EntityType>
+        <EntityType Name="tbl_PrTrxHeader">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TrxNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TrxStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TrxType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="WareHouseCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="TrxAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TrxBalance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="IntRefrence" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TotalDiscount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreInvoiceNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDescAr" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="TrxDescEn" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_WareHouse" Relationship="WMAERPModel.FK_PrTrxHeader_PrTrxHeader" FromRole="tbl_PrTrxHeader" ToRole="tbl_WareHouse" />
+          <NavigationProperty Name="tbl_Users" Relationship="WMAERPModel.FK_PrTrxHeader_tbl_Users" FromRole="tbl_PrTrxHeader" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Vendors" Relationship="WMAERPModel.FK_PrTrxHeader_tbl_Vendors" FromRole="tbl_PrTrxHeader" ToRole="tbl_Vendors" />
+        </EntityType>
+        <EntityType Name="tbl_PrTrxPayment">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="TrxNo" />
+            <PropertyRef Name="TrxType" />
+            <PropertyRef Name="TrxLineNo" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TrxType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TrxLineNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentType" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TrxPaymentDescAr" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="TrxPaymentDescEn" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_UserGroup">
+          <Key>
+            <PropertyRef Name="GroupCode" />
+          </Key>
+          <Property Name="GroupCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GroupNameA" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="GroupNameE" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="GroupStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Users" Relationship="WMAERPModel.FK_tbl_Users_tbl_UserGroup" FromRole="tbl_UserGroup" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullNameA" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FullNameE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="IsCasher" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModefiedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ModefiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_operators" Relationship="WMAERPModel.FK_tbl_operators_tbl_Users" FromRole="tbl_Users" ToRole="tbl_operators" />
+          <NavigationProperty Name="tbl_PrTrxHeader" Relationship="WMAERPModel.FK_PrTrxHeader_tbl_Users" FromRole="tbl_Users" ToRole="tbl_PrTrxHeader" />
+          <NavigationProperty Name="tbl_UserGroup" Relationship="WMAERPModel.FK_tbl_Users_tbl_UserGroup" FromRole="tbl_Users" ToRole="tbl_UserGroup" />
+        </EntityType>
+        <EntityType Name="tbl_VendorGroup">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="VendorGroupCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="VendorGroupCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreNameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreNameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_VendorGroup_tbl_Company" FromRole="tbl_VendorGroup" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_Vendors" Relationship="WMAERPModel.FK_tbl_Vendors_tbl_VendorGroup" FromRole="tbl_VendorGroup" ToRole="tbl_Vendors" />
+        </EntityType>
+        <EntityType Name="tbl_Vendors">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="VendoreCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreGroupCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreNameAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="VendoreNameEn" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_PrTrxHeader" Relationship="WMAERPModel.FK_PrTrxHeader_tbl_Vendors" FromRole="tbl_Vendors" ToRole="tbl_PrTrxHeader" />
+          <NavigationProperty Name="tbl_VendorGroup" Relationship="WMAERPModel.FK_tbl_Vendors_tbl_VendorGroup" FromRole="tbl_Vendors" ToRole="tbl_VendorGroup" />
+        </EntityType>
+        <EntityType Name="tbl_WareHouse">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+            <PropertyRef Name="WareHouseCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="WareHouseCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="WareHouseNameAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="WareHouseNameEn" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Company" Relationship="WMAERPModel.FK_tbl_WareHouse_tbl_Company" FromRole="tbl_WareHouse" ToRole="tbl_Company" />
+          <NavigationProperty Name="tbl_PrTrxHeader" Relationship="WMAERPModel.FK_PrTrxHeader_PrTrxHeader" FromRole="tbl_WareHouse" ToRole="tbl_PrTrxHeader" />
+        </EntityType>
+        <Association Name="FK_sa_POS_TrxDetails_sa_POS_TrxHeader">
+          <End Type="WMAERPModel.sa_POS_TrxHeader" Role="sa_POS_TrxHeader" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WMAERPModel.sa_POS_TrxDetails" Role="sa_POS_TrxDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sa_POS_TrxHeader">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="YearID" />
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="sa_POS_TrxDetails">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="YearID" />
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sa_POS_TrxHeader_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.sa_POS_TrxHeader" Role="sa_POS_TrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="sa_POS_TrxHeader">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Barcodes_tbl_ItemDefinition">
+          <End Type="WMAERPModel.tbl_ItemDefinition" Role="tbl_ItemDefinition" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_Barcodes" Role="tbl_Barcodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+            </Principal>
+            <Dependent Role="tbl_Barcodes">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Branch_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_Branch" Role="tbl_Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_Branch">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_CashBank">
+          <End Type="WMAERPModel.tbl_CashBank" Role="tbl_CashBank" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PosClose" Role="tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CashBank">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CB_Code" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CashCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_CashBank1">
+          <End Type="WMAERPModel.tbl_CashBank" Role="tbl_CashBank" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PosClose" Role="tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CashBank">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CB_Code" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BankCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CustomerGroup_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_CustomerGroup" Role="tbl_CustomerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_CustomerGroup">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Cutomers_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_Cutomers" Role="tbl_Cutomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_Cutomers">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemCategory_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemCategory" Role="tbl_ItemCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemCategory">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemColor_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemColor" Role="tbl_ItemColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemColor">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemDefinition" Role="tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemGroup_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemGroup" Role="tbl_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemGroup">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemSize_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemSize" Role="tbl_ItemSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemSize">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemType_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemType" Role="tbl_ItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemType">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_operators_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_operators" Role="tbl_operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_operators">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VendorGroup_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_VendorGroup" Role="tbl_VendorGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_VendorGroup">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_WareHouse_tbl_Company">
+          <End Type="WMAERPModel.tbl_Company" Role="tbl_Company" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_WareHouse" Role="tbl_WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Company">
+              <PropertyRef Name="CompanyCode" />
+            </Principal>
+            <Dependent Role="tbl_WareHouse">
+              <PropertyRef Name="CompanyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CurrencyExch_Currency">
+          <End Type="WMAERPModel.tbl_Currency" Role="tbl_Currency" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="WMAERPModel.tbl_CurrencyExch" Role="tbl_CurrencyExch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Currency">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CurrencyCode" />
+            </Principal>
+            <Dependent Role="tbl_CurrencyExch">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CurrencyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Cutomers_tbl_CustomerGroup">
+          <End Type="WMAERPModel.tbl_CustomerGroup" Role="tbl_CustomerGroup" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_Cutomers" Role="tbl_Cutomers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CustomerGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CustomerGroupCode" />
+            </Principal>
+            <Dependent Role="tbl_Cutomers">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="CustomerGroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemCategory_tbl_ItemCategory">
+          <End Type="WMAERPModel.tbl_ItemCategory" Role="tbl_ItemCategory" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemCategory" Role="tbl_ItemCategory1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemCategory">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemCategory1">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemCategory">
+          <End Type="WMAERPModel.tbl_ItemCategory" Role="tbl_ItemCategory" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_ItemDefinition" Role="tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemCategory">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCategoryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemGroup">
+          <End Type="WMAERPModel.tbl_ItemGroup" Role="tbl_ItemGroup" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_ItemDefinition" Role="tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemGroupCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemGroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemType">
+          <End Type="WMAERPModel.tbl_ItemType" Role="tbl_ItemType" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_ItemDefinition" Role="tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemType">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemTypeCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemDefinition_tbl_ItemUnit">
+          <End Type="WMAERPModel.tbl_ItemUnit" Role="tbl_ItemUnit" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_ItemDefinition" Role="tbl_ItemDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemUnit">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemUnitCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemDefinition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemUnitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemGroup_tbl_ItemGroupSections">
+          <End Type="WMAERPModel.tbl_ItemGroupSections" Role="tbl_ItemGroupSections" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_ItemGroup" Role="tbl_ItemGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemGroupSections">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="SectionCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="SectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ItemSpecification_tbl_ItemSpecification">
+          <End Type="WMAERPModel.tbl_ItemSpecification" Role="tbl_ItemSpecification" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_ItemSpecification" Role="tbl_ItemSpecification1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemSpecification">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+              <PropertyRef Name="DetailItemCode" />
+            </Principal>
+            <Dependent Role="tbl_ItemSpecification1">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="ItemCode" />
+              <PropertyRef Name="ItemService" />
+              <PropertyRef Name="DetailItemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_operators_tbl_Users">
+          <End Type="WMAERPModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_operators" Role="tbl_operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_operators">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_PosClose">
+          <End Type="WMAERPModel.tbl_operators" Role="tbl_operators" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PosClose" Role="tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_operators">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="OperatorCode" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="OperatorCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PosClose_tbl_POS_Definition">
+          <End Type="WMAERPModel.tbl_POS_Definition" Role="tbl_POS_Definition" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PosClose" Role="tbl_PosClose" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_POS_Definition">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="POSCode" />
+            </Principal>
+            <Dependent Role="tbl_PosClose">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="POSCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxDetails_PrTrxDetails">
+          <End Type="WMAERPModel.tbl_PrTrxDetails" Role="tbl_PrTrxDetails" Multiplicity="1" />
+          <End Type="WMAERPModel.tbl_PrTrxDetails" Role="tbl_PrTrxDetails1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrTrxDetails">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="TraLineNo" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxDetails1">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="BranchCode" />
+              <PropertyRef Name="TrxNo" />
+              <PropertyRef Name="TrxType" />
+              <PropertyRef Name="TraLineNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxHeader_PrTrxHeader">
+          <End Type="WMAERPModel.tbl_WareHouse" Role="tbl_WareHouse" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PrTrxHeader" Role="tbl_PrTrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WareHouse">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="WareHouseCode" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxHeader">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="WareHouseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxHeader_tbl_Users">
+          <End Type="WMAERPModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PrTrxHeader" Role="tbl_PrTrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxHeader">
+              <PropertyRef Name="CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrTrxHeader_tbl_Vendors">
+          <End Type="WMAERPModel.tbl_Vendors" Role="tbl_Vendors" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_PrTrxHeader" Role="tbl_PrTrxHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Vendors">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendoreCode" />
+            </Principal>
+            <Dependent Role="tbl_PrTrxHeader">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendoreCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_UserGroup">
+          <End Type="WMAERPModel.tbl_UserGroup" Role="tbl_UserGroup" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_Users" Role="tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserGroup">
+              <PropertyRef Name="GroupCode" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="GroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Vendors_tbl_VendorGroup">
+          <End Type="WMAERPModel.tbl_VendorGroup" Role="tbl_VendorGroup" Multiplicity="0..1" />
+          <End Type="WMAERPModel.tbl_Vendors" Role="tbl_Vendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VendorGroup">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendorGroupCode" />
+            </Principal>
+            <Dependent Role="tbl_Vendors">
+              <PropertyRef Name="CompanyCode" />
+              <PropertyRef Name="VendoreGroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WMAERPModelStoreContainer" CdmEntityContainer="WMAERPEntities">
+          <EntitySetMapping Name="sa_POS_TrxDetails">
+            <EntityTypeMapping TypeName="WMAERPModel.sa_POS_TrxDetails">
+              <MappingFragment StoreEntitySet="sa_POS_TrxDetails">
+                <ScalarProperty Name="SourceDocLineNo" ColumnName="SourceDocLineNo" />
+                <ScalarProperty Name="TrxDetailDescE" ColumnName="TrxDetailDescE" />
+                <ScalarProperty Name="TrxDetailDescA" ColumnName="TrxDetailDescA" />
+                <ScalarProperty Name="UnitTransValue" ColumnName="UnitTransValue" />
+                <ScalarProperty Name="ItemUnitCode" ColumnName="ItemUnitCode" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="DiscountRatio" ColumnName="DiscountRatio" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="TrxLineNo" ColumnName="TrxLineNo" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="TrxType" ColumnName="TrxType" />
+                <ScalarProperty Name="TrxNo" ColumnName="TrxNo" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sa_POS_TrxHeader">
+            <EntityTypeMapping TypeName="WMAERPModel.sa_POS_TrxHeader">
+              <MappingFragment StoreEntitySet="sa_POS_TrxHeader">
+                <ScalarProperty Name="RemainderValue" ColumnName="RemainderValue" />
+                <ScalarProperty Name="PayedValue" ColumnName="PayedValue" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Checks" ColumnName="Checks" />
+                <ScalarProperty Name="Visa" ColumnName="Visa" />
+                <ScalarProperty Name="ATM" ColumnName="ATM" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="CashCode" ColumnName="CashCode" />
+                <ScalarProperty Name="SourceDocPeriodId" ColumnName="SourceDocPeriodId" />
+                <ScalarProperty Name="SourceDocYearId" ColumnName="SourceDocYearId" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="POSCode" ColumnName="POSCode" />
+                <ScalarProperty Name="POSShift" ColumnName="POSShift" />
+                <ScalarProperty Name="TrxTime" ColumnName="TrxTime" />
+                <ScalarProperty Name="SourceDocType" ColumnName="SourceDocType" />
+                <ScalarProperty Name="SourceDocNo" ColumnName="SourceDocNo" />
+                <ScalarProperty Name="WarehouseCode" ColumnName="WarehouseCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+                <ScalarProperty Name="TrxBalance" ColumnName="TrxBalance" />
+                <ScalarProperty Name="TrxAmount" ColumnName="TrxAmount" />
+                <ScalarProperty Name="IntRefrence" ColumnName="IntRefrence" />
+                <ScalarProperty Name="TrxDescE" ColumnName="TrxDescE" />
+                <ScalarProperty Name="TrxDescA" ColumnName="TrxDescA" />
+                <ScalarProperty Name="TrxStatus" ColumnName="TrxStatus" />
+                <ScalarProperty Name="TrxDate" ColumnName="TrxDate" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="TrxType" ColumnName="TrxType" />
+                <ScalarProperty Name="TrxNo" ColumnName="TrxNo" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Barcodes">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Barcodes">
+              <MappingFragment StoreEntitySet="tbl_Barcodes">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="DiscountRatio" ColumnName="DiscountRatio" />
+                <ScalarProperty Name="ItemSizeCode" ColumnName="ItemSizeCode" />
+                <ScalarProperty Name="ItemColorCode" ColumnName="ItemColorCode" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="UnitTransValue" ColumnName="UnitTransValue" />
+                <ScalarProperty Name="ItemUnit" ColumnName="ItemUnit" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Branch">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Branch">
+              <MappingFragment StoreEntitySet="tbl_Branch">
+                <ScalarProperty Name="BranchNameEn" ColumnName="BranchNameEn" />
+                <ScalarProperty Name="BranchNameAr" ColumnName="BranchNameAr" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CashBank">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_CashBank">
+              <MappingFragment StoreEntitySet="tbl_CashBank">
+                <ScalarProperty Name="CB_NameE" ColumnName="CB_NameE" />
+                <ScalarProperty Name="CB_NameA" ColumnName="CB_NameA" />
+                <ScalarProperty Name="CB_Type" ColumnName="CB_Type" />
+                <ScalarProperty Name="CB_Code" ColumnName="CB_Code" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Company">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Company">
+              <MappingFragment StoreEntitySet="tbl_Company">
+                <ScalarProperty Name="CompanyNameEn" ColumnName="CompanyNameEn" />
+                <ScalarProperty Name="CompanyNameAr" ColumnName="CompanyNameAr" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Currency">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Currency">
+              <MappingFragment StoreEntitySet="tbl_Currency">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CurrencyNameE" ColumnName="CurrencyNameE" />
+                <ScalarProperty Name="CurrencyNameA" ColumnName="CurrencyNameA" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CurrencyExch">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_CurrencyExch">
+              <MappingFragment StoreEntitySet="tbl_CurrencyExch">
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="BaseCurrencyCode" ColumnName="BaseCurrencyCode" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CustomerGroup">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_CustomerGroup">
+              <MappingFragment StoreEntitySet="tbl_CustomerGroup">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CustomerGroupNameEn" ColumnName="CustomerGroupNameEn" />
+                <ScalarProperty Name="CustomerGroupNameAr" ColumnName="CustomerGroupNameAr" />
+                <ScalarProperty Name="CustomerGroupCode" ColumnName="CustomerGroupCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Cutomers">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Cutomers">
+              <MappingFragment StoreEntitySet="tbl_Cutomers">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CustomerNameEn" ColumnName="CustomerNameEn" />
+                <ScalarProperty Name="CustomerNameAr" ColumnName="CustomerNameAr" />
+                <ScalarProperty Name="CustomerGroupCode" ColumnName="CustomerGroupCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_DefaultSetting">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_DefaultSetting">
+              <MappingFragment StoreEntitySet="tbl_DefaultSetting">
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="SettingDescription" ColumnName="SettingDescription" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemCategory">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemCategory">
+              <MappingFragment StoreEntitySet="tbl_ItemCategory">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ItemCategoryNameEn" ColumnName="ItemCategoryNameEn" />
+                <ScalarProperty Name="ItemCategoryNameAr" ColumnName="ItemCategoryNameAr" />
+                <ScalarProperty Name="ItemCategoryCode" ColumnName="ItemCategoryCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemColor">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemColor">
+              <MappingFragment StoreEntitySet="tbl_ItemColor">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ItemColorNameEn" ColumnName="ItemColorNameEn" />
+                <ScalarProperty Name="ItemColorNameAr" ColumnName="ItemColorNameAr" />
+                <ScalarProperty Name="ItemColorCode" ColumnName="ItemColorCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemDefinition">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemDefinition">
+              <MappingFragment StoreEntitySet="tbl_ItemDefinition">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OriginalItemCode" ColumnName="OriginalItemCode" />
+                <ScalarProperty Name="ItemVendorCode" ColumnName="ItemVendorCode" />
+                <ScalarProperty Name="ReOrderQuantity" ColumnName="ReOrderQuantity" />
+                <ScalarProperty Name="MaxQuantity" ColumnName="MaxQuantity" />
+                <ScalarProperty Name="MinQuantity" ColumnName="MinQuantity" />
+                <ScalarProperty Name="MaxDiscountRatio" ColumnName="MaxDiscountRatio" />
+                <ScalarProperty Name="ItemUnitCode" ColumnName="ItemUnitCode" />
+                <ScalarProperty Name="ItemCategoryCode" ColumnName="ItemCategoryCode" />
+                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+                <ScalarProperty Name="ItemGroupCode" ColumnName="ItemGroupCode" />
+                <ScalarProperty Name="ItemNameEn" ColumnName="ItemNameEn" />
+                <ScalarProperty Name="ItemNameAr" ColumnName="ItemNameAr" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemGroup">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemGroup">
+              <MappingFragment StoreEntitySet="tbl_ItemGroup">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+                <ScalarProperty Name="ItemGroupNameEn" ColumnName="ItemGroupNameEn" />
+                <ScalarProperty Name="ItemGroupNameAr" ColumnName="ItemGroupNameAr" />
+                <ScalarProperty Name="ItemGroupCode" ColumnName="ItemGroupCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemGroupSections">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemGroupSections">
+              <MappingFragment StoreEntitySet="tbl_ItemGroupSections">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PrinterPath" ColumnName="PrinterPath" />
+                <ScalarProperty Name="SectionNameE" ColumnName="SectionNameE" />
+                <ScalarProperty Name="SectionNameA" ColumnName="SectionNameA" />
+                <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemPolicies">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemPolicies">
+              <MappingFragment StoreEntitySet="tbl_ItemPolicies">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PolicyNameEn" ColumnName="PolicyNameEn" />
+                <ScalarProperty Name="PolicyNameAr" ColumnName="PolicyNameAr" />
+                <ScalarProperty Name="PolicyCode" ColumnName="PolicyCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemPrices">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemPrices">
+              <MappingFragment StoreEntitySet="tbl_ItemPrices">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DiscountRatio" ColumnName="DiscountRatio" />
+                <ScalarProperty Name="PriceRatio" ColumnName="PriceRatio" />
+                <ScalarProperty Name="PriceValue" ColumnName="PriceValue" />
+                <ScalarProperty Name="ItemUnit" ColumnName="ItemUnit" />
+                <ScalarProperty Name="PolicyCode" ColumnName="PolicyCode" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemRelatedUnits">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemRelatedUnits">
+              <MappingFragment StoreEntitySet="tbl_ItemRelatedUnits">
+                <ScalarProperty Name="RelateUnitCode" ColumnName="RelateUnitCode" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemSize">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemSize">
+              <MappingFragment StoreEntitySet="tbl_ItemSize">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ItemSizeNameEn" ColumnName="ItemSizeNameEn" />
+                <ScalarProperty Name="ItemSizeNameAr" ColumnName="ItemSizeNameAr" />
+                <ScalarProperty Name="ItemSizeCode" ColumnName="ItemSizeCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemSpecification">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemSpecification">
+              <MappingFragment StoreEntitySet="tbl_ItemSpecification">
+                <ScalarProperty Name="UnitTransValue" ColumnName="UnitTransValue" />
+                <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+                <ScalarProperty Name="DetailItemUnit" ColumnName="DetailItemUnit" />
+                <ScalarProperty Name="DetailItemCode" ColumnName="DetailItemCode" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemType">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemType">
+              <MappingFragment StoreEntitySet="tbl_ItemType">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ItemTypeNameEn" ColumnName="ItemTypeNameEn" />
+                <ScalarProperty Name="ItemTypeNameAr" ColumnName="ItemTypeNameAr" />
+                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemUnit">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_ItemUnit">
+              <MappingFragment StoreEntitySet="tbl_ItemUnit">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UnitTransValue" ColumnName="UnitTransValue" />
+                <ScalarProperty Name="UnitTransCode" ColumnName="UnitTransCode" />
+                <ScalarProperty Name="ItemUnitDescE" ColumnName="ItemUnitDescE" />
+                <ScalarProperty Name="ItemUnitDescA" ColumnName="ItemUnitDescA" />
+                <ScalarProperty Name="ItemUnitCode" ColumnName="ItemUnitCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_operators">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_operators">
+              <MappingFragment StoreEntitySet="tbl_operators">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OperatorNameEn" ColumnName="OperatorNameEn" />
+                <ScalarProperty Name="OperatorNameAr" ColumnName="OperatorNameAr" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_POS_Definition">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_POS_Definition">
+              <MappingFragment StoreEntitySet="tbl_POS_Definition">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OpenBalance" ColumnName="OpenBalance" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="CashCode" ColumnName="CashCode" />
+                <ScalarProperty Name="POSNameEn" ColumnName="POSNameEn" />
+                <ScalarProperty Name="POSNameAr" ColumnName="POSNameAr" />
+                <ScalarProperty Name="POSCode" ColumnName="POSCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PosClose">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_PosClose">
+              <MappingFragment StoreEntitySet="tbl_PosClose">
+                <ScalarProperty Name="MainCashCode" ColumnName="MainCashCode" />
+                <ScalarProperty Name="NewOpenBalance" ColumnName="NewOpenBalance" />
+                <ScalarProperty Name="OldOpenBalance" ColumnName="OldOpenBalance" />
+                <ScalarProperty Name="ActualCash" ColumnName="ActualCash" />
+                <ScalarProperty Name="OperatorCode" ColumnName="OperatorCode" />
+                <ScalarProperty Name="POSShift" ColumnName="POSShift" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Checks" ColumnName="Checks" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="ATM" ColumnName="ATM" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="CashCode" ColumnName="CashCode" />
+                <ScalarProperty Name="POSCode" ColumnName="POSCode" />
+                <ScalarProperty Name="TrxDescE" ColumnName="TrxDescE" />
+                <ScalarProperty Name="TrxDescA" ColumnName="TrxDescA" />
+                <ScalarProperty Name="TrxStatus" ColumnName="TrxStatus" />
+                <ScalarProperty Name="TrxDate" ColumnName="TrxDate" />
+                <ScalarProperty Name="TrxNo" ColumnName="TrxNo" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrTrxDetails">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_PrTrxDetails">
+              <MappingFragment StoreEntitySet="tbl_PrTrxDetails">
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="LastUpdateDAte" ColumnName="LastUpdateDAte" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="VendoreCode" ColumnName="VendoreCode" />
+                <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
+                <ScalarProperty Name="WareHouseCode" ColumnName="WareHouseCode" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitTransValue" ColumnName="UnitTransValue" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="ItemUnit" ColumnName="ItemUnit" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="TraLineNo" ColumnName="TraLineNo" />
+                <ScalarProperty Name="TrxType" ColumnName="TrxType" />
+                <ScalarProperty Name="TrxNo" ColumnName="TrxNo" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrTrxHeader">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_PrTrxHeader">
+              <MappingFragment StoreEntitySet="tbl_PrTrxHeader">
+                <ScalarProperty Name="TrxDescEn" ColumnName="TrxDescEn" />
+                <ScalarProperty Name="TrxDescAr" ColumnName="TrxDescAr" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="VendoreInvoiceNumber" ColumnName="VendoreInvoiceNumber" />
+                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+                <ScalarProperty Name="IntRefrence" ColumnName="IntRefrence" />
+                <ScalarProperty Name="TrxBalance" ColumnName="TrxBalance" />
+                <ScalarProperty Name="TrxAmount" ColumnName="TrxAmount" />
+                <ScalarProperty Name="VendoreCode" ColumnName="VendoreCode" />
+                <ScalarProperty Name="WareHouseCode" ColumnName="WareHouseCode" />
+                <ScalarProperty Name="TrxType" ColumnName="TrxType" />
+                <ScalarProperty Name="TrxStatus" ColumnName="TrxStatus" />
+                <ScalarProperty Name="TrxNo" ColumnName="TrxNo" />
+                <ScalarProperty Name="TrxDate" ColumnName="TrxDate" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrTrxPayment">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_PrTrxPayment">
+              <MappingFragment StoreEntitySet="tbl_PrTrxPayment">
+                <ScalarProperty Name="VendoreCode" ColumnName="VendoreCode" />
+                <ScalarProperty Name="TrxPaymentDescEn" ColumnName="TrxPaymentDescEn" />
+                <ScalarProperty Name="TrxPaymentDescAr" ColumnName="TrxPaymentDescAr" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="TrxLineNo" ColumnName="TrxLineNo" />
+                <ScalarProperty Name="TrxType" ColumnName="TrxType" />
+                <ScalarProperty Name="TrxNo" ColumnName="TrxNo" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserGroup">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_UserGroup">
+              <MappingFragment StoreEntitySet="tbl_UserGroup">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="GroupStatus" ColumnName="GroupStatus" />
+                <ScalarProperty Name="GroupNameE" ColumnName="GroupNameE" />
+                <ScalarProperty Name="GroupNameA" ColumnName="GroupNameA" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="ModefiedDate" ColumnName="ModefiedDate" />
+                <ScalarProperty Name="ModefiedBy" ColumnName="ModefiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsCasher" ColumnName="IsCasher" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="FullNameE" ColumnName="FullNameE" />
+                <ScalarProperty Name="FullNameA" ColumnName="FullNameA" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VendorGroup">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_VendorGroup">
+              <MappingFragment StoreEntitySet="tbl_VendorGroup">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="VendoreNameEn" ColumnName="VendoreNameEn" />
+                <ScalarProperty Name="VendoreNameAr" ColumnName="VendoreNameAr" />
+                <ScalarProperty Name="VendorGroupCode" ColumnName="VendorGroupCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Vendors">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_Vendors">
+              <MappingFragment StoreEntitySet="tbl_Vendors">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="VendoreNameEn" ColumnName="VendoreNameEn" />
+                <ScalarProperty Name="VendoreNameAr" ColumnName="VendoreNameAr" />
+                <ScalarProperty Name="VendoreGroupCode" ColumnName="VendoreGroupCode" />
+                <ScalarProperty Name="VendoreCode" ColumnName="VendoreCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_WareHouse">
+            <EntityTypeMapping TypeName="WMAERPModel.tbl_WareHouse">
+              <MappingFragment StoreEntitySet="tbl_WareHouse">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="WareHouseNameEn" ColumnName="WareHouseNameEn" />
+                <ScalarProperty Name="WareHouseNameAr" ColumnName="WareHouseNameAr" />
+                <ScalarProperty Name="WareHouseCode" ColumnName="WareHouseCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

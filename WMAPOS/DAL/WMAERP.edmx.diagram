@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7106c780488847d086b78f2ce815a013" Name="Diagram1">
+        <EntityTypeShape EntityType="WMAERPModel.sa_POS_TrxDetails" Width="1.5" PointX="5.25" PointY="39.5" />
+        <EntityTypeShape EntityType="WMAERPModel.sa_POS_TrxHeader" Width="1.5" PointX="3" PointY="38.125" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Barcodes" Width="1.5" PointX="10.5" PointY="31.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Branch" Width="1.5" PointX="3" PointY="50.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_CashBank" Width="1.5" PointX="9" PointY="17.125" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Company" Width="1.5" PointX="0.75" PointY="26.125" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Currency" Width="1.5" PointX="5.75" PointY="5" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_CurrencyExch" Width="1.5" PointX="8" PointY="5.125" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_CustomerGroup" Width="1.5" PointX="3" PointY="27.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Cutomers" Width="1.5" PointX="8.25" PointY="26.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_DefaultSetting" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemCategory" Width="1.5" PointX="3" PointY="47" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemColor" Width="1.5" PointX="3" PointY="20.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemDefinition" Width="1.5" PointX="8.25" PointY="31" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemGroup" Width="1.5" PointX="6" PointY="26.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemGroupSections" Width="1.5" PointX="3.75" PointY="2.875" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemPolicies" Width="1.5" PointX="5.75" PointY="8.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemPrices" Width="1.5" PointX="7.75" PointY="8.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemRelatedUnits" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemSize" Width="1.5" PointX="3" PointY="14.375" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemSpecification" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemType" Width="1.5" PointX="3" PointY="17.5" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_ItemUnit" Width="1.5" PointX="6" PointY="18.25" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_operators" Width="1.5" PointX="6" PointY="22.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_POS_Definition" Width="1.5" PointX="9" PointY="13.25" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_PosClose" Width="1.5" PointX="11.25" PointY="21.125" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_PrTrxDetails" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_PrTrxHeader" Width="1.5" PointX="8.5" PointY="20.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_PrTrxPayment" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_UserGroup" Width="1.5" PointX="1.5" PointY="7" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Users" Width="1.5" PointX="3.75" PointY="6.25" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_VendorGroup" Width="1.5" PointX="3" PointY="34.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_Vendors" Width="1.5" PointX="5.25" PointY="34.625" />
+        <EntityTypeShape EntityType="WMAERPModel.tbl_WareHouse" Width="1.5" PointX="3" PointY="11" />
+        <AssociationConnector Association="WMAERPModel.FK_sa_POS_TrxDetails_sa_POS_TrxHeader" />
+        <AssociationConnector Association="WMAERPModel.FK_sa_POS_TrxHeader_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_Barcodes_tbl_ItemDefinition" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_Branch_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_PosClose_tbl_CashBank" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_PosClose_tbl_CashBank1" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_CustomerGroup_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_Cutomers_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemCategory_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemColor_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemGroup_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemSize_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemType_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_operators_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_VendorGroup_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_WareHouse_tbl_Company" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_CurrencyExch_Currency" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_Cutomers_tbl_CustomerGroup" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemCategory_tbl_ItemCategory" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemCategory" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemGroup" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemType" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemDefinition_tbl_ItemUnit" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemGroup_tbl_ItemGroupSections" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_ItemSpecification_tbl_ItemSpecification" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_operators_tbl_Users" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_PosClose_tbl_PosClose" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_PosClose_tbl_POS_Definition" />
+        <AssociationConnector Association="WMAERPModel.FK_PrTrxDetails_PrTrxDetails" />
+        <AssociationConnector Association="WMAERPModel.FK_PrTrxHeader_PrTrxHeader" />
+        <AssociationConnector Association="WMAERPModel.FK_PrTrxHeader_tbl_Users" />
+        <AssociationConnector Association="WMAERPModel.FK_PrTrxHeader_tbl_Vendors" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_Users_tbl_UserGroup" />
+        <AssociationConnector Association="WMAERPModel.FK_tbl_Vendors_tbl_VendorGroup" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

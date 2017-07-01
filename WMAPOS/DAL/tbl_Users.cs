@@ -18,6 +18,7 @@ namespace DAL
         public tbl_Users()
         {
             this.tbl_operators = new HashSet<tbl_operators>();
+            this.tbl_PrTrxHeader = new HashSet<tbl_PrTrxHeader>();
         }
     
         public string UserID { get; set; }
@@ -35,6 +36,8 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_operators> tbl_operators { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PrTrxHeader> tbl_PrTrxHeader { get; set; }
         public virtual tbl_UserGroup tbl_UserGroup { get; set; }
     }
 }

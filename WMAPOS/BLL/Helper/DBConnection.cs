@@ -10,7 +10,7 @@ namespace BLL.Helper
 {
     public class DbConnection : IDisposable
     {
-        protected WMAPOSEntities Context;
+        protected WMAERPEntities Context;
         //public ILogger Logger => new SystemErrorLog(Context.Database.Connection.ConnectionString);
         private bool _disposed = false;
         protected virtual void Dispose(bool disposing)

@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class tbl_WareHouse
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_WareHouse()
+        {
+            this.tbl_PrTrxHeader = new HashSet<tbl_PrTrxHeader>();
+        }
+    
         public string CompanyCode { get; set; }
         public string WareHouseCode { get; set; }
         public string WareHouseNameAr { get; set; }
@@ -22,5 +28,7 @@ namespace DAL
         public Nullable<System.DateTime> LastUpdateDate { get; set; }
     
         public virtual tbl_Company tbl_Company { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PrTrxHeader> tbl_PrTrxHeader { get; set; }
     }
 }

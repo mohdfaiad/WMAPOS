@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class tbl_POS_Definition
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_POS_Definition()
+        {
+            this.tbl_PosClose = new HashSet<tbl_PosClose>();
+        }
+    
         public string CompanyCode { get; set; }
         public string POSCode { get; set; }
         public string POSNameAr { get; set; }
@@ -23,5 +29,8 @@ namespace DAL
         public Nullable<decimal> OpenBalance { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> LastUpdateDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PosClose> tbl_PosClose { get; set; }
     }
 }
